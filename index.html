@@ -312,6 +312,28 @@
   .news-tag.market { background: rgba(255, 159, 10, 0.15); color: #FF9F0A; }
   .news-tag.amazon { background: rgba(10, 132, 255, 0.15); color: #0A84FF; }
   .news-tag.govt { background: rgba(191, 90, 242, 0.15); color: #BF5AF2; }
+  .news-tag.tech { background: rgba(100, 210, 255, 0.15); color: #64D2FF; }
+  .news-tag.parrot { background: rgba(48, 209, 88, 0.15); color: #30D158; }
+  .news-tag.health { background: rgba(255, 55, 95, 0.15); color: #FF375F; }
+  .news-tag.finance { background: rgba(255, 214, 10, 0.15); color: #FFD60A; }
+
+  /* News category headers */
+  .news-category {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+    padding: 18px 0 6px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    margin-bottom: 0;
+  }
+  .news-category:first-child { padding-top: 0; }
+  .news-category.cat-world { color: #FF453A; }
+  .news-category.cat-finance { color: #FFD60A; }
+  .news-category.cat-amazon { color: #0A84FF; }
+  .news-category.cat-tech { color: #64D2FF; }
+  .news-category.cat-parrot { color: #30D158; }
+  .news-category.cat-health { color: #FF375F; }
   .news-headline {
     font-size: 15px;
     font-weight: 600;
@@ -753,39 +775,148 @@
   <div class="card news">
     <h2>News & Industry</h2>
 
+    <!-- WORLD & POLITICS -->
+    <div class="news-category cat-world">World & Politics</div>
+
     <div class="news-item">
-      <span class="news-tag world">World</span>
-      <div class="news-headline">U.S.-Israel-Iran War Enters Day 12</div>
-      <div class="news-desc">Iran attacked vessels in the Strait of Hormuz. Defense Secretary Hegseth called today the most intense day of strikes yet. Oil supply disruptions continue.</div>
+      <span class="news-tag world">War — Day 12</span>
+      <div class="news-headline">U.S.-Israel Strikes Hit Tehran; Iran Fires "Most Intense" Volley Yet</div>
+      <div class="news-desc">Overnight strikes hit the capital and northern Iran. Tehran targeted Israel, Gulf nations, and ships in the Strait of Hormuz. At least 3 vessels struck. 140 U.S. troops wounded.</div>
       <a class="news-source" href="https://www.cnn.com/2026/03/11/middleeast/us-israel-iran-middle-east-war-what-we-know-intl-hnk" target="_blank">CNN ↗</a>
     </div>
 
     <div class="news-item">
-      <span class="news-tag market">Markets</span>
-      <div class="news-headline">Gas Prices Hit 18-Month High at $3.54/gal</div>
-      <div class="news-desc">Oil disruptions from the Iran conflict have driven a 21% price increase in one month. IEA is considering an emergency stockpile release.</div>
-      <a class="news-source" href="https://www.thestreet.com/latest-news/stock-market-today-march-10-2026" target="_blank">TheStreet ↗</a>
+      <span class="news-tag world">Intel</span>
+      <div class="news-headline">Russia Sharing Drone Tactics With Iran to Hit U.S. and Gulf Targets</div>
+      <div class="news-desc">Western intelligence says Moscow is giving Tehran specific advice on drone operations — a new level of direct Russian military support for Iran.</div>
+      <a class="news-source" href="https://www.cnn.com/2026/03/11/middleeast/us-israel-iran-middle-east-war-what-we-know-intl-hnk" target="_blank">CNN ↗</a>
     </div>
 
     <div class="news-item">
-      <span class="news-tag amazon">Amazon FBA</span>
-      <div class="news-headline">Commingled Inventory Ends March 31 — 20 Days Left</div>
-      <div class="news-desc">All products must be individually labeled with FNSKU. Brand Registry owners are exempt if using manufacturer barcodes. Resellers face workflow changes.</div>
-      <a class="news-source" href="https://www.bellavix.com/amazon-commingling-policy-update-2026-what-fba-sellers-must-do-before-march-31/" target="_blank">BellaVix ↗</a>
+      <span class="news-tag world">Energy</span>
+      <div class="news-headline">IEA Proposes Largest-Ever Oil Reserve Release: 400 Million Barrels</div>
+      <div class="news-desc">Emergency meeting of global energy officials aims to counter crude price surges from the Iran conflict supply disruptions.</div>
+      <a class="news-source" href="https://www.aljazeera.com/news/2026/3/11/iran-war-what-is-happening-on-day-12-of-us-israel-attacks" target="_blank">Al Jazeera ↗</a>
+    </div>
+
+    <!-- FINANCE & MARKETS -->
+    <div class="news-category cat-finance">Finance & Markets</div>
+
+    <div class="news-item">
+      <span class="news-tag finance">Indices</span>
+      <div class="news-headline">Dow Falls 289 Points; Oil Surges Past $91/bbl on War Fears</div>
+      <div class="news-desc">Dow shed 0.61% to 47,417. S&P 500 flat at 6,775. WTI crude jumped 4% to $87.25, Brent 4.8% to $91.98 despite IEA reserve announcement.</div>
+      <a class="news-source" href="https://www.cnbc.com/2026/03/10/stock-market-today-live-updates.html" target="_blank">CNBC ↗</a>
     </div>
 
     <div class="news-item">
-      <span class="news-tag amazon">Amazon FBA</span>
-      <div class="news-headline">DD+7 Payout Delay Starts Tomorrow</div>
-      <div class="news-desc">Amazon will delay seller payouts until 7 days after delivery instead of after shipment. Could impact cash flow for high-volume sellers.</div>
+      <span class="news-tag finance">Fiscal</span>
+      <div class="news-headline">U.S. Budget Deficit Tops $1 Trillion Through February</div>
+      <div class="news-desc">Deficit hit $1.004T for fiscal year to date, though 12% lower than the same period last year as revenues rose faster than spending.</div>
+      <a class="news-source" href="https://www.thestreet.com/latest-news/stock-market-today-march-11-2026-inflation-report-overshadowed-by-iran-conflict-iea-oil-reserve-announcement" target="_blank">TheStreet ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag finance">Shipping</span>
+      <div class="news-headline">Chubb to Underwrite $20B Strait of Hormuz Shipping Insurance Plan</div>
+      <div class="news-desc">Chubb will lead a U.S.-backed insurance plan for vessels passing through the Strait, working with the Development Finance Corporation.</div>
+      <a class="news-source" href="https://www.thestreet.com/latest-news/stock-market-today-march-11-2026-inflation-report-overshadowed-by-iran-conflict-iea-oil-reserve-announcement" target="_blank">TheStreet ↗</a>
+    </div>
+
+    <!-- AMAZON & E-COMMERCE -->
+    <div class="news-category cat-amazon">Amazon & E-Commerce</div>
+
+    <div class="news-item">
+      <span class="news-tag amazon">Policy</span>
+      <div class="news-headline">DD+7 Payout Delay Starts Tomorrow, March 12</div>
+      <div class="news-desc">Amazon will delay seller payouts until 7 days after delivery instead of after shipment. Review cash flow positions today.</div>
       <a class="news-source" href="https://www.novadata.io/resources/news" target="_blank">NovaData ↗</a>
     </div>
 
     <div class="news-item">
-      <span class="news-tag govt">Government</span>
-      <div class="news-headline">Government Shutdown Enters Week 4 — Airport Chaos</div>
-      <div class="news-desc">TSA staffing shortages during spring break are creating 3+ hour security lines at major airports nationwide.</div>
-      <a class="news-source" href="https://news-usa.today/phoenix-airport-security-lines-spring-break-shutdown-cause-delays-march-2026/" target="_blank">News USA Today ↗</a>
+      <span class="news-tag amazon">Deadline</span>
+      <div class="news-headline">Commingled Inventory Ends March 31 — 20 Days Left</div>
+      <div class="news-desc">Stickerless commingling ending. Brand Registry owners exempt with manufacturer barcodes; resellers must use Amazon barcode labeling.</div>
+      <a class="news-source" href="https://www.bellavix.com/amazon-commingling-policy-update-2026-what-fba-sellers-must-do-before-march-31/" target="_blank">BellaVix ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag amazon">AI Agents</span>
+      <div class="news-headline">Amazon's New AI Agent Policy Now in Effect Since March 4</div>
+      <div class="news-desc">BSA update requires all AI agents to identify themselves as automated systems and comply with the new Agent Policy. Non-compliant agents will lose access.</div>
+      <a class="news-source" href="https://ppc.land/amazons-new-ai-agent-rules-shake-up-sellers-before-march-4-deadline/" target="_blank">PPC Land ↗</a>
+    </div>
+
+    <!-- AI & TECHNOLOGY -->
+    <div class="news-category cat-tech">AI & Technology</div>
+
+    <div class="news-item">
+      <span class="news-tag tech">Healthcare</span>
+      <div class="news-headline">AI Agents Flood Healthcare at HIMSS — Validation Concerns Grow</div>
+      <div class="news-desc">Epic launched 3 AI agents (note-taking, billing, patient scheduling). Oracle rolled out agents for 30 specialties. Experts warn about insufficient patient testing.</div>
+      <a class="news-source" href="https://www.statnews.com/2026/03/11/ai-agents-himss-google-microsoft-epic-oracle/" target="_blank">STAT News ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag tech">Research</span>
+      <div class="news-headline">Anthropic Study: Big Gap Between What AI Can Do vs. What It's Doing</div>
+      <div class="news-desc">New employment research finds AI capabilities far outpace actual deployment. The key question is how fast that gap closes.</div>
+      <a class="news-source" href="https://fortune.com/2026/03/10/will-ai-take-your-job-this-chart-in-an-economic-study-by-anthropic-may-give-you-a-hint-but-the-answer-is-complicated/" target="_blank">Fortune ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag tech">Enterprise</span>
+      <div class="news-headline">86% of Enterprises Increasing AI Budgets in 2026</div>
+      <div class="news-desc">AI agent experimentation has become full production deployments across code, legal, finance, and admin. Custom solutions ranked as most important factor.</div>
+      <a class="news-source" href="https://blogs.nvidia.com/blog/state-of-ai-report-2026/" target="_blank">NVIDIA ↗</a>
+    </div>
+
+    <!-- PARROTS -->
+    <div class="news-category cat-parrot">Parrots & Aviculture</div>
+
+    <div class="news-item">
+      <span class="news-tag parrot">Conservation</span>
+      <div class="news-headline">59 Kākāpō Chicks Hatch in Standout Breeding Season</div>
+      <div class="news-desc">One of the most successful recent seasons for the critically endangered flightless parrot. Total adult population now at 236, up from just 51 in the 1990s.</div>
+      <a class="news-source" href="https://news.mongabay.com/short-article/2026/03/critically-endangered-kakapo-parrot-has-standout-breeding-season/" target="_blank">Mongabay ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag parrot">Recovery</span>
+      <div class="news-headline">Puerto Rican Amazon Population Hits 900 — Up From 13 in 1973</div>
+      <div class="news-desc">The endangered species has reached population levels not seen in over 50 years, a landmark achievement in Caribbean conservation.</div>
+      <a class="news-source" href="https://parrots.org/news/worldwide/international-womens-day-2026/" target="_blank">World Parrot Trust ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag parrot">Threat</span>
+      <div class="news-headline">Global Sting Recovers 30,000 Animals — 20% Are Wild Birds Including Grey Parrots</div>
+      <div class="news-desc">Trafficking remains a multi-billion-dollar industry. Poachers target Hyacinth Macaws for the pet trade, stealing birds, hatchlings, and eggs from wild nests.</div>
+      <a class="news-source" href="https://www.rainforesttrust.org/our-impact/rainforest-news/protect-rare-parrots-targeted-by-traffickers/" target="_blank">Rainforest Trust ↗</a>
+    </div>
+
+    <!-- HEALTH & LONGEVITY -->
+    <div class="news-category cat-health">Health & Longevity</div>
+
+    <div class="news-item">
+      <span class="news-tag health">Research</span>
+      <div class="news-headline">Scientists Map How Aging Reshapes 21 Organs — Starts Earlier Than Expected</div>
+      <div class="news-desc">Massive cellular atlas studying 7 million cells reveals aging begins earlier than thought and unfolds in coordinated waves across the body.</div>
+      <a class="news-source" href="https://www.sciencedaily.com/news/health_medicine/healthy_aging/" target="_blank">ScienceDaily ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag health">Clinical</span>
+      <div class="news-headline">First Human Trials of Epigenetic Reprogramming Therapy Set for 2026</div>
+      <div class="news-desc">Partial epigenetic reprogramming therapy ER-100 heading to first-ever human clinical trials. Skin rejuvenation trials also planned this year.</div>
+      <a class="news-source" href="https://www.labiotech.eu/best-biotech/anti-aging-biotech-companies/" target="_blank">Labiotech ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag health">Funding</span>
+      <div class="news-headline">ARPA-H Funds 7 Teams to Extend Healthspan via PROSPR Program</div>
+      <div class="news-desc">Anti-aging market hit $85B in 2025, projected to reach $120B by 2030. Federal funding now targeting therapies to prolong resilience and healthspan.</div>
+      <a class="news-source" href="https://www.afar.org/top-breakthroughs-in-aging" target="_blank">AFAR ↗</a>
     </div>
   </div>
 
