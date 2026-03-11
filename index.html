@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Morning Briefing — March 11, 2026</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #0a0a0a;
+    color: #b0b0b5;
+    line-height: 1.5;
+  }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 40px 24px 60px;
+  }
+
+  /* Greeting */
+  .greeting h1 {
+    font-size: 34px;
+    font-weight: 700;
+    color: #f5f5f7;
+    margin-bottom: 0;
+  }
+  .greeting .date {
+    font-size: 17px;
+    color: #6e6e73;
+    margin-top: 4px;
+  }
+
+  /* Weather strip */
+  .weather-strip {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-top: 12px;
+    font-size: 15px;
+    color: #6e6e73;
+  }
+  .weather-strip .temp {
+    font-size: 20px;
+    font-weight: 600;
+    color: #f5f5f7;
+  }
+  .weather-strip .condition {
+    color: #b0b0b5;
+  }
+  .weather-strip .detail {
+    font-size: 13px;
+    color: #6e6e73;
+  }
+
+  /* Cards */
+  .card {
+    background: #1c1c1e;
+    border-radius: 16px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.04);
+    padding: 24px;
+    margin-top: 16px;
+    transition: box-shadow 0.2s ease;
+  }
+  .card:hover {
+    box-shadow: 0 4px 16px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+
+  .card h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #6e6e73;
+    font-weight: 600;
+    margin-bottom: 16px;
+  }
+
+  /* Priorities */
+  .priorities {
+    background: #000000;
+    border: 1px solid rgba(255,255,255,0.08);
+  }
+  .priorities h2 {
+    color: rgba(255,255,255,0.4);
+  }
+  .priority-item {
+    display: flex;
+    gap: 14px;
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: flex-start;
+  }
+  .priority-item:last-child { border-bottom: none; }
+  .priority-num {
+    font-size: 22px;
+    font-weight: 700;
+    min-width: 28px;
+    line-height: 1.2;
+  }
+  .priority-num.red { color: #FF453A; }
+  .priority-num.orange { color: #FF9F0A; }
+  .priority-num.blue { color: #0A84FF; }
+  .priority-text {
+    flex: 1;
+  }
+  .priority-title {
+    font-weight: 600;
+    color: #f5f5f7;
+    font-size: 16px;
+    line-height: 1.3;
+  }
+  .priority-context {
+    font-size: 14px;
+    color: rgba(255,255,255,0.45);
+    margin-top: 2px;
+  }
+
+  /* Calendar */
+  .cal-empty {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 0;
+  }
+  .cal-empty-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    background: rgba(48, 209, 88, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+  }
+  .cal-empty-text .label {
+    font-weight: 600;
+    color: #f5f5f7;
+    font-size: 16px;
+  }
+  .cal-empty-text .sub {
+    font-size: 14px;
+    color: #6e6e73;
+  }
+  .free-badge {
+    display: inline-block;
+    background: rgba(48, 209, 88, 0.15);
+    color: #30D158;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-top: 8px;
+  }
+
+  /* Email */
+  .email-group-label {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+  }
+  .email-group-label:first-child { margin-top: 0; }
+  .email-group-label.urgent { color: #FF453A; }
+  .email-group-label.attention { color: #FF9F0A; }
+  .email-group-label.fyi { color: #0A84FF; }
+
+  .email-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    align-items: flex-start;
+  }
+  .email-item:last-child { border-bottom: none; }
+
+  .email-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    margin-top: 7px;
+  }
+  .email-dot.red { background: #FF453A; }
+  .email-dot.orange { background: #FF9F0A; }
+  .email-dot.blue { background: #0A84FF; }
+
+  .email-content { flex: 1; }
+  .email-sender {
+    font-weight: 600;
+    color: #f5f5f7;
+    font-size: 15px;
+  }
+  .email-subject {
+    font-size: 14px;
+    color: #b0b0b5;
+    margin-top: 1px;
+  }
+  .email-summary {
+    font-size: 13px;
+    color: #6e6e73;
+    margin-top: 2px;
+  }
+  .email-time {
+    font-size: 12px;
+    color: #6e6e73;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .reply-toggle {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0A84FF;
+    cursor: pointer;
+    margin-top: 6px;
+    user-select: none;
+  }
+  .reply-toggle:hover { opacity: 0.7; }
+  .reply-box {
+    display: none;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-top: 8px;
+    font-size: 13px;
+    color: #b0b0b5;
+    line-height: 1.5;
+  }
+  .reply-box.open { display: block; }
+
+  /* News */
+  .news-item {
+    padding: 12px 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .news-item:last-child { border-bottom: none; }
+  .news-tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 2px 8px;
+    border-radius: 6px;
+    margin-bottom: 4px;
+  }
+  .news-tag.world { background: rgba(255, 69, 58, 0.15); color: #FF453A; }
+  .news-tag.market { background: rgba(255, 159, 10, 0.15); color: #FF9F0A; }
+  .news-tag.amazon { background: rgba(10, 132, 255, 0.15); color: #0A84FF; }
+  .news-tag.govt { background: rgba(191, 90, 242, 0.15); color: #BF5AF2; }
+
+  .news-headline {
+    font-size: 15px;
+    font-weight: 600;
+    color: #f5f5f7;
+    line-height: 1.35;
+  }
+  .news-desc {
+    font-size: 14px;
+    color: #6e6e73;
+    margin-top: 3px;
+  }
+  .news-source {
+    font-size: 12px;
+    color: #0A84FF;
+    text-decoration: none;
+    margin-top: 4px;
+    display: inline-block;
+    transition: opacity 0.15s;
+  }
+  .news-source:hover { opacity: 0.7; }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    font-size: 12px;
+    color: #3a3a3c;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  /* Alert banner */
+  .alert-banner {
+    background: rgba(255, 159, 10, 0.1);
+    border: 1px solid rgba(255, 159, 10, 0.25);
+    border-radius: 12px;
+    padding: 14px 18px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    color: #FF9F0A;
+  }
+  .alert-banner strong {
+    color: #FFD60A;
+  }
+  .alert-banner .icon { font-size: 18px; }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- Greeting -->
+  <div class="greeting">
+    <h1 id="greeting-text">Good morning, Carl.</h1>
+    <p class="date">Wednesday, March 11, 2026</p>
+  </div>
+
+  <!-- Weather Strip -->
+  <div class="weather-strip">
+    <span style="font-size:24px;">☀️</span>
+    <span class="temp">65°F</span>
+    <span class="condition">Sunny &nbsp;·&nbsp; Low 43°F</span>
+    <span class="detail">Patchy frost early &nbsp;·&nbsp; NW wind 9–11 mph</span>
+  </div>
+
+  <!-- Alert: Amazon Payout Delay -->
+  <div class="alert-banner">
+    <span class="icon">⚠️</span>
+    <span><strong>Heads up:</strong> Amazon's new DD+7 payout delay policy starts <strong>tomorrow, March 12</strong>. Review your cash flow positions today.</span>
+  </div>
+
+  <!-- Priorities -->
+  <div class="card priorities">
+    <h2>Today's Focus</h2>
+    <div class="priority-item">
+      <span class="priority-num red">1</span>
+      <div class="priority-text">
+        <div class="priority-title">Fix Kalyn's Kreations registered agent payment</div>
+        <div class="priority-context">Auto-pay has failed 3 times. Documents will be auto-rejected until resolved.</div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num orange">2</span>
+      <div class="priority-text">
+        <div class="priority-title">Sign the Paradigm Press NDA</div>
+        <div class="priority-context">Signature request sent today — pending your review and signature.</div>
+      </div>
+    </div>
+    <div class="priority-item">
+      <span class="priority-num blue">3</span>
+      <div class="priority-text">
+        <div class="priority-title">Fix parrot-breeder Vercel deployment</div>
+        <div class="priority-context">Two consecutive production deploys failed over the weekend. Site may be down.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Calendar -->
+  <div class="card calendar">
+    <h2>Schedule</h2>
+    <div class="cal-empty">
+      <div class="cal-empty-icon">✨</div>
+      <div class="cal-empty-text">
+        <div class="label">No meetings today</div>
+        <div class="sub">Your calendar is completely clear — a good day for deep work.</div>
+      </div>
+    </div>
+    <span class="free-badge">Full day available</span>
+  </div>
+
+  <!-- Email -->
+  <div class="card email">
+    <h2>Email</h2>
+
+    <div class="email-group-label urgent">Action Required</div>
+
+    <div class="email-item">
+      <div class="email-dot red"></div>
+      <div class="email-content">
+        <div class="email-sender">Florida Registered Agent</div>
+        <div class="email-subject">Auto-pay failure for Kalyn's Kreations</div>
+        <div class="email-summary">Payment has failed 3 times. Any documents received will be automatically rejected until payment is resolved.</div>
+        <div class="email-time">Mar 10</div>
+        <span class="reply-toggle" onclick="toggleReply(this)">Show suggested action ▾</span>
+        <div class="reply-box">
+          Log in to Florida Registered Agent and update the payment method on file for Kalyn's Kreations. If the card has expired or been replaced, enter the new one. Then manually trigger a retry or contact their support to confirm reinstatement.
+        </div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="email-dot red"></div>
+      <div class="email-content">
+        <div class="email-sender">Paradigm Press [OFFICIAL]</div>
+        <div class="email-subject">Signature Request For Carl — NDA Pending</div>
+        <div class="email-summary">Your non-disclosure signature is pending. Review and sign the document.</div>
+        <div class="email-time">Today</div>
+        <span class="reply-toggle" onclick="toggleReply(this)">Show suggested action ▾</span>
+        <div class="reply-box">
+          Open the signature request link in the email, review the NDA terms, and sign electronically. Check the sender address and document carefully before signing.
+        </div>
+      </div>
+    </div>
+
+    <div class="email-group-label attention">Needs Review</div>
+
+    <div class="email-item">
+      <div class="email-dot orange"></div>
+      <div class="email-content">
+        <div class="email-sender">Vercel</div>
+        <div class="email-subject">Failed production deployment — parrot-breeder</div>
+        <div class="email-summary">Two failed deploys on the main branch (Sat & Sun). Check build logs and fix.</div>
+        <div class="email-time">Mar 8</div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="email-dot orange"></div>
+      <div class="email-content">
+        <div class="email-sender">Jule Leyson — My Amazon Guy</div>
+        <div class="email-subject">ASIN optimization video for K2xLabs B08P54L18Z</div>
+        <div class="email-summary">Sent a keyword opportunity analysis for PPC and SEO on your hemp oil listing. Video review included.</div>
+        <div class="email-time">Mar 9</div>
+        <span class="reply-toggle" onclick="toggleReply(this)">Show suggested action ▾</span>
+        <div class="reply-box">
+          This appears to be a cold outreach / sales pitch from My Amazon Guy. Worth watching the video if you're interested in listing optimization services, but no urgent reply needed. Note: sent to 3 different email addresses (buster@, carl@, kgerber@k2xlabs.com).
+        </div>
+      </div>
+    </div>
+
+    <div class="email-group-label fyi">FYI</div>
+
+    <div class="email-item">
+      <div class="email-dot blue"></div>
+      <div class="email-content">
+        <div class="email-sender">Vanessa Hung — Online Seller Solutions</div>
+        <div class="email-subject">Your catalog has a compliance issue you've never audited</div>
+        <div class="email-summary">Marketing email warning about Amazon catalog suppression risks. Likely promotional.</div>
+        <div class="email-time">Today</div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="email-dot blue"></div>
+      <div class="email-content">
+        <div class="email-sender">Chase</div>
+        <div class="email-subject">Mortgage payment received — $1,005.41</div>
+        <div class="email-summary">Payment applied to account ending in 9740. No action needed.</div>
+        <div class="email-time">Mar 10</div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="email-dot blue"></div>
+      <div class="email-content">
+        <div class="email-sender">Roadrunner Financial</div>
+        <div class="email-subject">Payment confirmed</div>
+        <div class="email-summary">Payment of record confirmed for account 2588790.</div>
+        <div class="email-time">Mar 8</div>
+      </div>
+    </div>
+
+    <div class="email-item">
+      <div class="email-dot blue"></div>
+      <div class="email-content">
+        <div class="email-sender">Notion</div>
+        <div class="email-subject">Your Notion export is ready</div>
+        <div class="email-summary">Two exports ready for download. Links expire in ~5 days.</div>
+        <div class="email-time">Mar 6</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- News -->
+  <div class="card news">
+    <h2>News & Industry</h2>
+
+    <div class="news-item">
+      <span class="news-tag world">World</span>
+      <div class="news-headline">U.S.-Israel-Iran War Enters Day 12</div>
+      <div class="news-desc">Iran attacked vessels in the Strait of Hormuz. Defense Secretary Hegseth called today the most intense day of strikes yet. Oil supply disruptions continue.</div>
+      <a class="news-source" href="https://www.cnn.com/2026/03/11/middleeast/us-israel-iran-middle-east-war-what-we-know-intl-hnk" target="_blank">CNN ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag market">Markets</span>
+      <div class="news-headline">Gas Prices Hit 18-Month High at $3.54/gal</div>
+      <div class="news-desc">Oil disruptions from the Iran conflict have driven a 21% price increase in one month. IEA is considering an emergency stockpile release.</div>
+      <a class="news-source" href="https://www.thestreet.com/latest-news/stock-market-today-march-10-2026" target="_blank">TheStreet ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag amazon">Amazon FBA</span>
+      <div class="news-headline">Commingled Inventory Ends March 31 — 20 Days Left</div>
+      <div class="news-desc">All products must be individually labeled with FNSKU. Brand Registry owners are exempt if using manufacturer barcodes. Resellers face workflow changes.</div>
+      <a class="news-source" href="https://www.bellavix.com/amazon-commingling-policy-update-2026-what-fba-sellers-must-do-before-march-31/" target="_blank">BellaVix ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag amazon">Amazon FBA</span>
+      <div class="news-headline">DD+7 Payout Delay Starts Tomorrow</div>
+      <div class="news-desc">Amazon will delay seller payouts until 7 days after delivery instead of after shipment. Could impact cash flow for high-volume sellers.</div>
+      <a class="news-source" href="https://www.novadata.io/resources/news" target="_blank">NovaData ↗</a>
+    </div>
+
+    <div class="news-item">
+      <span class="news-tag govt">Government</span>
+      <div class="news-headline">Government Shutdown Enters Week 4 — Airport Chaos</div>
+      <div class="news-desc">TSA staffing shortages during spring break are creating 3+ hour security lines at major airports nationwide.</div>
+      <a class="news-source" href="https://news-usa.today/phoenix-airport-security-lines-spring-break-shutdown-cause-delays-march-2026/" target="_blank">News USA Today ↗</a>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="footer">
+    Briefing generated at <span id="gen-time"></span> · Loxahatchee, FL · ☀️ 65°F
+  </div>
+
+</div>
+
+<script>
+  // Greeting logic
+  const hour = new Date().getHours();
+  const greetEl = document.getElementById('greeting-text');
+  if (hour < 12) greetEl.textContent = 'Good morning, Carl.';
+  else if (hour < 17) greetEl.textContent = 'Good afternoon, Carl.';
+  else greetEl.textContent = 'Good evening, Carl.';
+
+  // Gen time
+  document.getElementById('gen-time').textContent = new Date().toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+
+  // Reply toggle
+  function toggleReply(el) {
+    const box = el.nextElementSibling;
+    box.classList.toggle('open');
+    el.textContent = box.classList.contains('open') ? 'Hide ▴' : 'Show suggested action ▾';
+  }
+</script>
+</body>
+</html>
