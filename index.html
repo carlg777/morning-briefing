@@ -3,523 +3,670 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Morning Briefing — Carl Gerber</title>
+<title>Carl's Morning Briefing — April 25, 2026</title>
 <style>
   :root {
-    --bg: #0a0a0a; --card: #1c1c1e; --card2: #2c2c2e; --text: #f5f5f7;
-    --text2: #b0b0b5; --text3: #6e6e73; --red: #FF453A; --orange: #FF9F0A;
-    --blue: #0A84FF; --green: #30D158; --purple: #BF5AF2; --yellow: #FFD60A;
-    --teal: #64D2FF; --pink: #FF375F; --border: #3a3a3c; --radius: 14px;
+    --bg: #0a0a0a;
+    --card: #1c1c1e;
+    --card2: #2c2c2e;
+    --text: #f5f5f7;
+    --text2: #b0b0b5;
+    --text3: #6e6e73;
+    --red: #FF453A;
+    --orange: #FF9F0A;
+    --yellow: #FFD60A;
+    --blue: #0A84FF;
+    --green: #30D158;
+    --purple: #BF5AF2;
+    --teal: #64D2FF;
+    --pink: #FF375F;
+    --border: rgba(255,255,255,0.08);
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif; font-size: 15px; line-height: 1.5; min-height: 100vh; }
-  a { color: var(--blue); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  .wrapper { max-width: 1200px; margin: 0 auto; padding: 24px 20px; }
-  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-  .col-span-2 { grid-column: span 2; }
-  .card { background: var(--card); border-radius: var(--radius); padding: 20px; border: 1px solid var(--border); }
-  .card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 16px; }
-  .card-title { font-size: 13px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); }
-  .section-title { font-size: 17px; font-weight: 700; color: var(--text); }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Helvetica Neue', Arial, sans-serif;
+    font-size: 14px;
+    line-height: 1.5;
+    min-height: 100vh;
+  }
+  .container { max-width: 1400px; margin: 0 auto; padding: 24px 20px; }
 
-  /* GREETING */
-  .greeting-card { background: linear-gradient(135deg, #1c1c1e 0%, #2c1c2e 100%); border: 1px solid #3a2a4a; padding: 28px 24px; border-radius: var(--radius); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
-  .greeting-text h1 { font-size: 28px; font-weight: 700; letter-spacing: -0.5px; }
-  .greeting-text p { color: var(--text2); font-size: 14px; margin-top: 4px; }
-  .greeting-time { text-align: right; }
-  .time-display { font-size: 36px; font-weight: 300; letter-spacing: -1px; font-variant-numeric: tabular-nums; }
-  .date-display { font-size: 13px; color: var(--text2); margin-top: 2px; }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+  }
+  .greeting { font-size: 32px; font-weight: 700; letter-spacing: -0.5px; color: var(--text); }
+  .date-line { font-size: 15px; color: var(--text3); margin-top: 4px; }
+  .clock { font-size: 42px; font-weight: 200; letter-spacing: -1px; color: var(--text); font-variant-numeric: tabular-nums; }
 
-  /* ALERT */
-  .alert-banner { background: linear-gradient(90deg, rgba(255,69,58,0.15) 0%, rgba(255,159,10,0.1) 100%); border: 1px solid rgba(255,69,58,0.4); border-radius: var(--radius); padding: 14px 20px; margin-bottom: 16px; display: flex; align-items: flex-start; gap: 12px; }
-  .alert-icon { font-size: 20px; flex-shrink: 0; }
-  .alert-text { font-size: 14px; color: var(--text); }
-  .alert-text strong { color: var(--orange); }
+  .alert-banner {
+    background: linear-gradient(135deg, rgba(255,69,58,0.15), rgba(255,69,58,0.05));
+    border: 1px solid rgba(255,69,58,0.4);
+    border-radius: 14px;
+    padding: 14px 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .alert-icon { font-size: 22px; flex-shrink: 0; }
+  .alert-title { font-size: 14px; font-weight: 700; color: var(--red); }
+  .alert-body { font-size: 13px; color: var(--text2); margin-top: 2px; }
 
-  /* WEATHER */
-  .weather-current { display: flex; align-items: flex-start; gap: 24px; padding: 16px 0; border-bottom: 1px solid var(--border); margin-bottom: 16px; flex-wrap: wrap; }
-  .weather-temp-main { font-size: 56px; font-weight: 200; letter-spacing: -2px; line-height: 1; }
-  .weather-desc { font-size: 14px; color: var(--text2); margin-top: 6px; }
-  .weather-stats { display: flex; flex-wrap: wrap; gap: 10px 22px; flex: 1; min-width: 200px; }
-  .weather-stat { font-size: 13px; color: var(--text2); }
-  .weather-stat span { color: var(--text); font-weight: 500; }
-  .hourly-label, .weekly-label { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text3); margin-bottom: 10px; }
-  .weekly-label { margin-top: 16px; }
-  .hourly-scroll { overflow-x: auto; padding-bottom: 8px; scrollbar-width: thin; scrollbar-color: var(--border) transparent; }
-  .hourly-row { display: flex; gap: 8px; min-width: max-content; }
-  .hour-card { background: var(--card2); border-radius: 12px; padding: 12px 10px; text-align: center; min-width: 74px; border: 1px solid var(--border); flex-shrink: 0; position: relative; }
-  .hour-card.now-card { border-color: var(--blue); background: rgba(10,132,255,0.1); }
-  .now-badge { position: absolute; top: -9px; left: 50%; transform: translateX(-50%); background: var(--blue); color: #fff; font-size: 9px; font-weight: 700; padding: 2px 6px; border-radius: 4px; letter-spacing: 0.05em; white-space: nowrap; }
-  .hour-time { font-size: 11px; color: var(--text3); font-weight: 600; margin-bottom: 5px; }
-  .hour-emoji { font-size: 20px; margin-bottom: 4px; }
-  .hour-temp { font-size: 16px; font-weight: 600; margin-bottom: 4px; }
-  .hour-rain { font-size: 11px; font-weight: 500; margin-bottom: 3px; }
+  .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+  .grid-1 { margin-bottom: 16px; }
+
+  .card {
+    background: var(--card);
+    border-radius: 18px;
+    padding: 20px;
+    border: 1px solid var(--border);
+  }
+  .card-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .card-title .dot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
+
+  .weather-current {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border);
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  .weather-main { display: flex; align-items: center; gap: 16px; }
+  .weather-emoji { font-size: 52px; }
+  .weather-temp { font-size: 52px; font-weight: 200; letter-spacing: -2px; color: var(--text); }
+  .weather-desc { font-size: 15px; color: var(--text2); margin-top: 2px; }
+  .weather-details { display: grid; grid-template-columns: 1fr 1fr; gap: 8px 24px; }
+  .weather-detail { display: flex; flex-direction: column; }
+  .weather-detail-label { font-size: 10px; color: var(--text3); text-transform: uppercase; letter-spacing: 0.6px; }
+  .weather-detail-val { font-size: 15px; font-weight: 500; color: var(--text); }
+
+  .hourly-scroll {
+    display: flex;
+    gap: 10px;
+    overflow-x: auto;
+    padding-bottom: 8px;
+    scrollbar-width: thin;
+    scrollbar-color: var(--card2) transparent;
+    margin-bottom: 20px;
+  }
+  .hourly-scroll::-webkit-scrollbar { height: 4px; }
+  .hourly-scroll::-webkit-scrollbar-thumb { background: var(--card2); border-radius: 2px; }
+
+  .hour-card {
+    flex-shrink: 0;
+    width: 82px;
+    background: var(--card2);
+    border-radius: 14px;
+    padding: 12px 8px;
+    text-align: center;
+    border: 1px solid var(--border);
+    position: relative;
+  }
+  .hour-card.now { border-color: var(--blue); background: rgba(10,132,255,0.12); }
+  .now-badge {
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--blue);
+    color: white;
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    padding: 2px 7px;
+    border-radius: 20px;
+    white-space: nowrap;
+  }
+  .hour-time { font-size: 11px; color: var(--text3); font-weight: 500; margin-bottom: 6px; }
+  .hour-emoji { font-size: 22px; margin-bottom: 6px; }
+  .hour-temp { font-size: 15px; font-weight: 600; margin-bottom: 5px; }
+  .hour-rain { font-size: 11px; font-weight: 600; padding: 2px 6px; border-radius: 20px; margin-bottom: 4px; display: inline-block; }
   .hour-wind { font-size: 10px; color: var(--text3); }
-  .weekly-row { display: flex; align-items: center; gap: 12px; padding: 9px 10px; border-radius: 10px; margin-bottom: 3px; font-size: 14px; }
-  .weekly-row.today-row { background: rgba(10,132,255,0.08); border: 1px solid rgba(10,132,255,0.2); }
-  .weekly-day { width: 72px; font-weight: 600; flex-shrink: 0; }
-  .weekly-emoji { font-size: 18px; width: 26px; text-align: center; flex-shrink: 0; }
-  .weekly-temps { width: 78px; flex-shrink: 0; }
-  .weekly-high { font-weight: 600; }
-  .weekly-low { color: var(--text3); font-size: 12px; }
-  .weekly-desc { flex: 1; color: var(--text2); font-size: 13px; }
-  .weekly-rain { font-size: 12px; font-weight: 500; flex-shrink: 0; }
 
-  /* PRIORITIES */
-  .priority-item { display: flex; gap: 14px; padding: 13px 0; border-bottom: 1px solid var(--border); }
+  .temp-mild { color: var(--text); }
+  .temp-warm { color: var(--orange); }
+  .temp-hot { color: var(--red); }
+  .temp-teal { color: var(--teal); }
+  .rain-low { background: rgba(48,209,88,0.15); color: var(--green); }
+  .rain-med { background: rgba(255,214,10,0.15); color: var(--yellow); }
+  .rain-high { background: rgba(255,159,10,0.15); color: var(--orange); }
+
+  .section-label {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text3);
+    margin-bottom: 10px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+  }
+
+  .forecast-row {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+    gap: 12px;
+  }
+  .forecast-row:last-child { border-bottom: none; }
+  .forecast-row.today-row { background: rgba(10,132,255,0.06); border-radius: 10px; padding: 10px; margin: 0 -10px; }
+  .forecast-day { width: 80px; font-size: 13px; font-weight: 600; color: var(--text2); flex-shrink: 0; }
+  .forecast-day.today { color: var(--blue); }
+  .forecast-emoji { width: 28px; text-align: center; font-size: 20px; flex-shrink: 0; }
+  .forecast-temps { display: flex; gap: 8px; align-items: center; flex-shrink: 0; width: 90px; }
+  .forecast-high { font-size: 14px; font-weight: 700; }
+  .forecast-sep { color: var(--text3); font-size: 12px; }
+  .forecast-low { font-size: 13px; color: var(--text3); }
+  .forecast-desc { flex: 1; font-size: 12px; color: var(--text2); }
+  .forecast-rain { font-size: 11px; font-weight: 600; padding: 2px 7px; border-radius: 20px; flex-shrink: 0; }
+
+  .priority-item { display: flex; gap: 14px; padding: 12px 0; border-bottom: 1px solid var(--border); align-items: flex-start; }
   .priority-item:last-child { border-bottom: none; }
-  .priority-num { width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
-  .pri-1 { background: rgba(255,69,58,0.2); color: var(--red); }
-  .pri-2 { background: rgba(255,159,10,0.2); color: var(--orange); }
-  .pri-3 { background: rgba(10,132,255,0.2); color: var(--blue); }
-  .priority-content h4 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
-  .priority-content p { font-size: 13px; color: var(--text2); }
+  .priority-num { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; flex-shrink: 0; margin-top: 1px; }
+  .p1 { background: rgba(255,69,58,0.15); color: var(--red); }
+  .p2 { background: rgba(255,159,10,0.15); color: var(--orange); }
+  .p3 { background: rgba(10,132,255,0.15); color: var(--blue); }
+  .priority-title { font-size: 14px; font-weight: 600; color: var(--text); }
+  .priority-desc { font-size: 12px; color: var(--text2); margin-top: 3px; }
 
-  /* CALENDAR */
-  .cal-empty { text-align: center; padding: 24px 16px; color: var(--text3); font-size: 14px; }
+  .cal-empty { text-align: center; padding: 30px 20px; color: var(--text3); }
 
-  /* EMAIL */
-  .email-notice { background: rgba(255,159,10,0.08); border: 1px solid rgba(255,159,10,0.2); border-radius: 10px; padding: 12px 16px; font-size: 13px; color: var(--text2); margin-bottom: 14px; }
-  .email-tier-header { font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; padding: 5px 10px; border-radius: 6px; margin-bottom: 8px; margin-top: 10px; }
-  .email-tier-header:first-child { margin-top: 0; }
+  .email-tier { margin-bottom: 16px; }
+  .tier-label { font-size: 10px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 4px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px; }
   .tier-action { background: rgba(255,69,58,0.15); color: var(--red); }
   .tier-review { background: rgba(255,159,10,0.15); color: var(--orange); }
-  .email-item { padding: 9px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .email-item:last-child { border-bottom: none; }
-  .email-from { font-weight: 600; }
-  .email-subject { color: var(--text2); margin-top: 2px; }
-  .email-action { color: var(--blue); font-size: 12px; margin-top: 4px; }
+  .tier-fyi { background: rgba(110,110,115,0.2); color: var(--text3); }
+  .email-item { display: flex; gap: 12px; padding: 10px 12px; background: var(--card2); border-radius: 12px; margin-bottom: 8px; align-items: flex-start; border-left: 3px solid transparent; }
+  .email-item.action { border-left-color: var(--red); }
+  .email-item.review { border-left-color: var(--orange); }
+  .email-icon { font-size: 18px; flex-shrink: 0; }
+  .email-content { flex: 1; min-width: 0; }
+  .email-from { font-size: 11px; color: var(--text3); }
+  .email-subject { font-size: 13px; font-weight: 600; color: var(--text); margin: 2px 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .email-snippet { font-size: 12px; color: var(--text2); }
+  .email-action-tag { font-size: 10px; font-weight: 700; padding: 3px 8px; border-radius: 20px; background: rgba(255,69,58,0.15); color: var(--red); white-space: nowrap; flex-shrink: 0; margin-top: 2px; }
+  .tag-orange { background: rgba(255,159,10,0.15); color: var(--orange); }
 
-  /* NEWS */
-  .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 16px; }
-  .news-category { background: var(--card); border-radius: var(--radius); padding: 16px; border: 1px solid var(--border); }
-  .cat-header { display: flex; align-items: center; gap: 8px; margin-bottom: 12px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
-  .cat-emoji { font-size: 16px; }
-  .cat-name { font-size: 13px; font-weight: 700; }
-  .cat-world .cat-name { color: var(--red); }
-  .cat-finance .cat-name { color: var(--yellow); }
-  .cat-amazon .cat-name { color: var(--blue); }
-  .cat-tech .cat-name { color: var(--teal); }
-  .cat-gadget .cat-name { color: #AC8EFF; }
-  .cat-apple .cat-name { color: #C8C8D2; }
-  .cat-parrot .cat-name { color: var(--green); }
-  .cat-health .cat-name { color: var(--pink); }
-  .news-story { padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 13px; }
-  .news-story:last-child { border-bottom: none; padding-bottom: 0; }
-  .story-headline { font-weight: 600; color: var(--text); line-height: 1.4; }
-  .story-headline a { color: var(--text); }
-  .story-headline a:hover { color: var(--blue); }
-  .story-desc { color: var(--text2); font-size: 12px; margin-top: 3px; line-height: 1.4; }
-  .story-tag { display: inline-block; font-size: 9px; font-weight: 700; text-transform: uppercase; padding: 2px 5px; border-radius: 4px; margin-bottom: 4px; letter-spacing: 0.06em; }
-  .tag-world { background: rgba(255,69,58,0.15); color: var(--red); }
-  .tag-finance { background: rgba(255,214,10,0.15); color: var(--yellow); }
-  .tag-amazon { background: rgba(10,132,255,0.15); color: var(--blue); }
-  .tag-tech { background: rgba(100,210,255,0.15); color: var(--teal); }
-  .tag-gadget { background: rgba(172,142,255,0.15); color: #AC8EFF; }
-  .tag-apple { background: rgba(200,200,210,0.15); color: #C8C8D2; }
-  .tag-parrot { background: rgba(48,209,88,0.15); color: var(--green); }
-  .tag-health { background: rgba(255,55,95,0.15); color: var(--pink); }
+  .news-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 16px; }
+  .news-col { display: flex; flex-direction: column; }
+  .news-cat-header { font-size: 11px; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; padding: 10px 14px; border-radius: 12px 12px 0 0; }
+  .cat-world { background: rgba(255,69,58,0.2); color: #FF6B63; }
+  .cat-finance { background: rgba(255,214,10,0.2); color: #FFD60A; }
+  .cat-amazon { background: rgba(10,132,255,0.2); color: #3D9EFF; }
+  .cat-tech { background: rgba(100,210,255,0.2); color: #64D2FF; }
+  .cat-gadget { background: rgba(172,142,255,0.2); color: #AC8EFF; }
+  .cat-apple { background: rgba(200,200,210,0.15); color: #C8C8D2; }
+  .cat-parrot { background: rgba(48,209,88,0.2); color: #30D158; }
+  .cat-health { background: rgba(255,55,95,0.2); color: #FF375F; }
+  .news-stories { background: var(--card); border-radius: 0 0 12px 12px; border: 1px solid var(--border); border-top: none; overflow: hidden; flex: 1; }
+  .news-story { padding: 12px 14px; border-bottom: 1px solid var(--border); }
+  .news-story:last-child { border-bottom: none; }
+  .news-story:hover { background: var(--card2); }
+  .news-headline { font-size: 12px; font-weight: 600; color: var(--text); line-height: 1.4; margin-bottom: 4px; }
+  .news-headline a { color: inherit; text-decoration: none; }
+  .news-headline a:hover { text-decoration: underline; }
+  .news-desc { font-size: 11px; color: var(--text2); line-height: 1.4; }
 
-  .temp-cold { color: var(--teal); } .temp-mild { color: var(--text); }
-  .temp-warm { color: var(--orange); } .temp-hot { color: var(--red); }
-  .rain-low { color: var(--green); } .rain-med { color: var(--yellow); }
-  .rain-high { color: var(--orange); } .rain-veryhigh { color: var(--red); }
+  .footer { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; color: var(--text3); font-size: 12px; flex-wrap: wrap; gap: 12px; }
+  .footer-weather { font-size: 13px; color: var(--text2); font-weight: 500; margin-bottom: 3px; }
 
-  .footer { margin-top: 32px; padding: 16px 0; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: var(--text3); flex-wrap: wrap; gap: 8px; }
-  .section-gap { margin-top: 16px; }
-
-  @media (max-width: 768px) {
-    .grid-2 { grid-template-columns: 1fr; }
-    .col-span-2 { grid-column: span 1; }
-    .news-grid { grid-template-columns: 1fr; }
-    .greeting-card { flex-direction: column; }
-    .greeting-time { text-align: left; }
-  }
+  @media (max-width: 1100px) { .news-grid { grid-template-columns: repeat(2,1fr); } }
+  @media (max-width: 768px) { .grid-2 { grid-template-columns: 1fr; } .news-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
-<div class="wrapper">
+<div class="container">
 
-  <div class="greeting-card">
-    <div class="greeting-text">
-      <h1 id="greeting">Good Morning, Carl ☀️</h1>
-      <p>Here's what you need to know today — Friday, April 24, 2026</p>
+  <div class="header">
+    <div>
+      <div class="greeting" id="greeting">Good morning, Carl ☀️</div>
+      <div class="date-line">Saturday, April 25, 2026 &nbsp;·&nbsp; Loxahatchee, FL 33470</div>
     </div>
-    <div class="greeting-time">
-      <div class="time-display" id="clock">--:--</div>
-      <div class="date-display">Loxahatchee, FL · EDT</div>
-    </div>
+    <div class="clock" id="clock">--:--</div>
   </div>
 
   <div class="alert-banner">
-    <div class="alert-icon">⚡</div>
-    <div class="alert-text">
-      <strong>Storm Watch:</strong> Thunderstorms possible 5–7 PM today (26% chance). Wrap up outdoor activities by 2:30 PM. Also: Amazon FBA 3.5% fuel surcharge is now live — review your margins. Oil at $96.50/barrel on Middle East war tensions.
+    <div class="alert-icon">🚨</div>
+    <div>
+      <div class="alert-title">DEADLINE ALERT — 6 DAYS REMAINING</div>
+      <div class="alert-body">Florida Annual Reports due <strong>May 1, 2026</strong> for both <strong>Gerber Global Marketing Inc</strong> and <strong>Kalyn's Kreations</strong>. Failure to file = company dissolution. File now at <strong>sunbiz.org</strong>.</div>
     </div>
   </div>
 
+  <!-- PRIORITIES + CALENDAR -->
   <div class="grid-2">
-
-    <!-- WEATHER -->
-    <div class="card col-span-2">
-      <div class="card-header"><span class="card-title">🌤 Weather — Loxahatchee, FL 33470</span></div>
-      <div class="weather-current">
+    <div class="card">
+      <div class="card-title"><span class="dot" style="background:var(--orange)"></span>Top Priorities Today</div>
+      <div class="priority-item">
+        <div class="priority-num p1">1</div>
         <div>
-          <div class="weather-temp-main">72°F</div>
-          <div class="weather-desc">Mostly Cloudy · As of 5:53 AM EDT</div>
-        </div>
-        <div class="weather-stats">
-          <div class="weather-stat">Humidity <span>68%</span></div>
-          <div class="weather-stat">Wind <span>SE 3 mph</span></div>
-          <div class="weather-stat">Dewpoint <span>61°F</span></div>
-          <div class="weather-stat">Barometer <span>29.94 in</span></div>
-          <div class="weather-stat">Visibility <span>10.00 mi</span></div>
-          <div class="weather-stat">Today's High <span style="color:var(--orange)">83°F</span></div>
-          <div class="weather-stat">Tonight's Low <span style="color:var(--teal)">64°F</span></div>
-          <div class="weather-stat">Summary <span>Partly Sunny → T-Storms ~5 PM</span></div>
-        </div>
-      </div>
-
-      <div class="hourly-label">Hourly Forecast</div>
-      <div class="hourly-scroll"><div class="hourly-row" id="hourly-row"></div></div>
-
-      <div class="weekly-label">7-Day Outlook</div>
-      <div class="weekly-row today-row">
-        <div class="weekly-day">Today</div><div class="weekly-emoji">⛈️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">83°F</div><div class="weekly-low">64°F</div></div>
-        <div class="weekly-desc">Partly sunny then chance T-storms after 3 PM</div>
-        <div class="weekly-rain rain-low">💧 30%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Saturday</div><div class="weekly-emoji">🌦️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">86°F</div><div class="weekly-low">65°F</div></div>
-        <div class="weekly-desc">Sunny then chance showers after 2 PM</div>
-        <div class="weekly-rain rain-low">💧 30%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Sunday</div><div class="weekly-emoji">⛈️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">87°F</div><div class="weekly-low">66°F</div></div>
-        <div class="weekly-desc">Sunny then chance T-storms after 2 PM</div>
-        <div class="weekly-rain rain-low">💧 30%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Monday</div><div class="weekly-emoji">🌤️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">87°F</div><div class="weekly-low">67°F</div></div>
-        <div class="weekly-desc">Sunny then slight chance T-storms after 2 PM</div>
-        <div class="weekly-rain rain-low">💧 20%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Tuesday</div><div class="weekly-emoji">☀️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">87°F</div><div class="weekly-low">66°F</div></div>
-        <div class="weekly-desc">Sunny and clear all day</div>
-        <div class="weekly-rain rain-low">💧 0%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Wednesday</div><div class="weekly-emoji">☀️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-warm">89°F</div><div class="weekly-low">66°F</div></div>
-        <div class="weekly-desc">Sunny — heating up</div>
-        <div class="weekly-rain rain-low">💧 0%</div>
-      </div>
-      <div class="weekly-row">
-        <div class="weekly-day">Thursday</div><div class="weekly-emoji">☀️</div>
-        <div class="weekly-temps"><div class="weekly-high temp-hot">90°F</div><div class="weekly-low">—</div></div>
-        <div class="weekly-desc">Sunny — first 90°F day of the stretch</div>
-        <div class="weekly-rain rain-low">💧 0%</div>
-      </div>
-    </div>
-
-    <!-- PRIORITIES -->
-    <div class="card">
-      <div class="card-header"><span class="card-title">🎯 Top Priorities Today</span></div>
-      <div class="priority-item">
-        <div class="priority-num pri-1">1</div>
-        <div class="priority-content">
-          <h4>Review Amazon FBA Fuel Surcharge Impact</h4>
-          <p>The 3.5% surcharge (~$0.17/unit) is now live since Apr 17. Audit your Parrot Bliss product margins and reprice if needed before weekend traffic.</p>
+          <div class="priority-title">🏢 File Florida Annual Reports — URGENT</div>
+          <div class="priority-desc">Both Gerber Global Marketing Inc and Kalyn's Kreations are due May 1 — only 6 days away. File online at sunbiz.org to avoid dissolution fees and status loss.</div>
         </div>
       </div>
       <div class="priority-item">
-        <div class="priority-num pri-2">2</div>
-        <div class="priority-content">
-          <h4>Parrot Bliss Content — Ride the Kākāpō Wave</h4>
-          <p>Record 95 kākāpō hatchlings is massive conservation news drawing 100k+ viewers online. Excellent hook for a viral YouTube script right now.</p>
+        <div class="priority-num p2">2</div>
+        <div>
+          <div class="priority-title">📄 Review USAA New Document</div>
+          <div class="priority-desc">USAA sent a document notification for account ending 0953. Check USAA portal to see if action is required on your account.</div>
         </div>
       </div>
       <div class="priority-item">
-        <div class="priority-num pri-3">3</div>
-        <div class="priority-content">
-          <h4>Outdoor Activities Before 2:30 PM</h4>
-          <p>Thunderstorm window opens at 5 PM. Schedule parrots' outdoor time, errands, or yard work for morning/early afternoon today.</p>
+        <div class="priority-num p3">3</div>
+        <div>
+          <div class="priority-title">🤖 Test GPT-5.5 &amp; DeepSeek V4</div>
+          <div class="priority-desc">OpenAI launched GPT-5.5 (now in ChatGPT for paid users) and DeepSeek released V4 Flash + Pro. Both have strong coding and agentic capabilities worth evaluating for your workflows.</div>
         </div>
       </div>
     </div>
 
-    <!-- CALENDAR -->
     <div class="card">
-      <div class="card-header"><span class="card-title">📅 Today's Calendar</span></div>
+      <div class="card-title"><span class="dot" style="background:var(--blue)"></span>Today's Calendar</div>
       <div class="cal-empty">
-        <div style="font-size:36px;margin-bottom:10px;">🎉</div>
-        <div style="font-weight:600;color:var(--text2);font-size:15px;">No events today</div>
-        <div style="font-size:13px;margin-top:6px;color:var(--text3);">Your Friday is wide open — make it count, Carl</div>
+        <div style="font-size:36px;margin-bottom:10px;">📅</div>
+        <div style="font-size:15px;font-weight:600;color:var(--text2);margin-bottom:6px;">No events scheduled</div>
+        <div style="font-size:13px;">Your Saturday is wide open — great time to tackle those Florida Annual Reports and explore the new AI model releases.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEATHER -->
+  <div class="card grid-1">
+    <div class="card-title"><span class="dot" style="background:var(--teal)"></span>Weather — Loxahatchee, FL 33470</div>
+
+    <div class="weather-current">
+      <div class="weather-main">
+        <div class="weather-emoji">🌤️</div>
+        <div>
+          <div class="weather-temp">68°F</div>
+          <div class="weather-desc">Fair · High 87° / Low 66° · ⛈ PM Thunderstorms Possible</div>
+        </div>
+      </div>
+      <div class="weather-details">
+        <div class="weather-detail"><span class="weather-detail-label">Humidity</span><span class="weather-detail-val">87%</span></div>
+        <div class="weather-detail"><span class="weather-detail-label">Wind</span><span class="weather-detail-val">Calm</span></div>
+        <div class="weather-detail"><span class="weather-detail-label">Dewpoint</span><span class="weather-detail-val">64°F</span></div>
+        <div class="weather-detail"><span class="weather-detail-label">Visibility</span><span class="weather-detail-val">10.0 mi</span></div>
+        <div class="weather-detail"><span class="weather-detail-label">Barometer</span><span class="weather-detail-val">29.87 in</span></div>
+        <div class="weather-detail"><span class="weather-detail-label">Alert</span><span class="weather-detail-val" style="color:var(--yellow)">⚡ T-storm 5–6 PM</span></div>
       </div>
     </div>
 
-    <!-- EMAIL -->
-    <div class="card col-span-2">
-      <div class="card-header"><span class="card-title">📬 Email Triage</span></div>
-      <div class="email-notice">⚠️ Gmail connector requires re-authentication. <a href="#">Reconnect Gmail</a> to restore live email summaries. Showing suggested items based on current news.</div>
-      <div class="email-tier-header tier-action">🔴 Action Required</div>
-      <div class="email-item">
-        <div class="email-from">Amazon Seller Central</div>
-        <div class="email-subject">FBA Fuel Surcharge Live — Review Profitability Reports</div>
-        <div class="email-action">→ Log into Seller Central → Reports → Business Reports to assess margin impact</div>
+    <div class="section-label">Today's Hourly Forecast</div>
+    <div class="hourly-scroll" id="hourlyScroll">
+      <div class="hour-card" data-hour="11"><div class="hour-time">11 AM</div><div class="hour-emoji">☀️</div><div class="hour-temp temp-warm">81°</div><div class="hour-rain rain-low">0%</div><div class="hour-wind">SE 2mph</div></div>
+      <div class="hour-card" data-hour="12"><div class="hour-time">12 PM</div><div class="hour-emoji">☀️</div><div class="hour-temp temp-warm">84°</div><div class="hour-rain rain-low">0%</div><div class="hour-wind">SE 3mph</div></div>
+      <div class="hour-card" data-hour="13"><div class="hour-time">1 PM</div><div class="hour-emoji">☀️</div><div class="hour-temp temp-warm">86°</div><div class="hour-rain rain-low">1%</div><div class="hour-wind">SE 3mph</div></div>
+      <div class="hour-card" data-hour="14"><div class="hour-time">2 PM</div><div class="hour-emoji">☀️</div><div class="hour-temp temp-warm">87°</div><div class="hour-rain rain-low">6%</div><div class="hour-wind">SE 5mph</div></div>
+      <div class="hour-card" data-hour="15"><div class="hour-time">3 PM</div><div class="hour-emoji">⛈</div><div class="hour-temp temp-warm">87°</div><div class="hour-rain rain-low">17%</div><div class="hour-wind">SE 3mph</div></div>
+      <div class="hour-card" data-hour="16"><div class="hour-time">4 PM</div><div class="hour-emoji">⛈</div><div class="hour-temp temp-warm">86°</div><div class="hour-rain rain-low">18%</div><div class="hour-wind">S 3mph</div></div>
+      <div class="hour-card" data-hour="17"><div class="hour-time">5 PM</div><div class="hour-emoji">⛈</div><div class="hour-temp temp-warm">87°</div><div class="hour-rain rain-med">26%</div><div class="hour-wind">SW 3mph</div></div>
+      <div class="hour-card" data-hour="18"><div class="hour-time">6 PM</div><div class="hour-emoji">⛈</div><div class="hour-temp temp-warm">83°</div><div class="hour-rain rain-med">26%</div><div class="hour-wind">SW 3mph</div></div>
+      <div class="hour-card" data-hour="19"><div class="hour-time">7 PM</div><div class="hour-emoji">🌦️</div><div class="hour-temp temp-warm">82°</div><div class="hour-rain rain-med">22%</div><div class="hour-wind">SW 2mph</div></div>
+      <div class="hour-card" data-hour="20"><div class="hour-time">8 PM</div><div class="hour-emoji">🌦️</div><div class="hour-temp temp-mild">78°</div><div class="hour-rain rain-low">15%</div><div class="hour-wind">SW 2mph</div></div>
+      <div class="hour-card" data-hour="21"><div class="hour-time">9 PM</div><div class="hour-emoji">🌥️</div><div class="hour-temp temp-mild">73°</div><div class="hour-rain rain-low">8%</div><div class="hour-wind">S 2mph</div></div>
+      <div class="hour-card" data-hour="22"><div class="hour-time">10 PM</div><div class="hour-emoji">🌥️</div><div class="hour-temp temp-mild">72°</div><div class="hour-rain rain-low">5%</div><div class="hour-wind">SE 2mph</div></div>
+      <div class="hour-card" data-hour="23"><div class="hour-time">11 PM</div><div class="hour-emoji">🌥️</div><div class="hour-temp temp-mild">70°</div><div class="hour-rain rain-low">3%</div><div class="hour-wind">S 2mph</div></div>
+    </div>
+
+    <div class="section-label">7-Day Outlook</div>
+    <div class="forecast-row today-row">
+      <div class="forecast-day today">Today Sat</div><div class="forecast-emoji">⛈</div>
+      <div class="forecast-temps"><span class="forecast-high temp-warm">87°</span><span class="forecast-sep">/</span><span class="forecast-low">66°</span></div>
+      <div class="forecast-desc">Fog early, sunny, slight chance PM thunderstorms 2–6 PM</div>
+      <div class="forecast-rain rain-low">20%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Sun 4/26</div><div class="forecast-emoji">⛈</div>
+      <div class="forecast-temps"><span class="forecast-high temp-warm">88°</span><span class="forecast-sep">/</span><span class="forecast-low">66°</span></div>
+      <div class="forecast-desc">Fog then sunny; chance thunderstorms after 2 PM</div>
+      <div class="forecast-rain rain-med">30%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Mon 4/27</div><div class="forecast-emoji">🌤️</div>
+      <div class="forecast-temps"><span class="forecast-high temp-warm">87°</span><span class="forecast-sep">/</span><span class="forecast-low">67°</span></div>
+      <div class="forecast-desc">Sunny then slight chance PM thunderstorms; N winds 6 mph</div>
+      <div class="forecast-rain rain-low">20%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Tue 4/28</div><div class="forecast-emoji">☀️</div>
+      <div class="forecast-temps"><span class="forecast-high temp-warm">86°</span><span class="forecast-sep">/</span><span class="forecast-low">65°</span></div>
+      <div class="forecast-desc">Sunny and pleasant; NE winds 5–9 mph</div>
+      <div class="forecast-rain rain-low">0%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Wed 4/29</div><div class="forecast-emoji">☀️</div>
+      <div class="forecast-temps"><span class="forecast-high temp-warm">88°</span><span class="forecast-sep">/</span><span class="forecast-low">66°</span></div>
+      <div class="forecast-desc">Sunny and warm; light east winds</div>
+      <div class="forecast-rain rain-low">0%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Thu 4/30</div><div class="forecast-emoji">☀️</div>
+      <div class="forecast-temps"><span class="forecast-high temp-hot">90°</span><span class="forecast-sep">/</span><span class="forecast-low">67°</span></div>
+      <div class="forecast-desc">Sunny and hot — first 90°+ day; heat index watch</div>
+      <div class="forecast-rain rain-low">0%</div>
+    </div>
+    <div class="forecast-row">
+      <div class="forecast-day">Fri 5/1</div><div class="forecast-emoji">🌤️</div>
+      <div class="forecast-temps"><span class="forecast-high temp-hot">91°</span><span class="forecast-sep">/</span><span class="forecast-low">–</span></div>
+      <div class="forecast-desc">Mostly sunny and very hot — FL Annual Report deadline day!</div>
+      <div class="forecast-rain rain-low">10%</div>
+    </div>
+  </div>
+
+  <!-- EMAIL -->
+  <div class="card grid-1">
+    <div class="card-title"><span class="dot" style="background:var(--red)"></span>Email Triage — Unread / Recent (48h)</div>
+
+    <div class="email-tier">
+      <div class="tier-label tier-action">⚡ Action Required</div>
+      <div class="email-item action">
+        <div class="email-icon">🏢</div>
+        <div class="email-content">
+          <div class="email-from">info@reminder.floridaregisteredagent.com</div>
+          <div class="email-subject">FL Annual Report — Gerber Global Marketing Inc due 05/01/2026</div>
+          <div class="email-snippet">Required annual report due by May 1. Failure to file = company dissolution. File at sunbiz.org immediately.</div>
+        </div>
+        <div class="email-action-tag">DUE 5/1</div>
       </div>
-      <div class="email-item">
-        <div class="email-from">Apple Developer</div>
-        <div class="email-subject">DEADLINE April 28: All apps must target iOS 26 SDK</div>
-        <div class="email-action">→ If you have any App Store submissions pending, verify SDK compliance this weekend</div>
+      <div class="email-item action">
+        <div class="email-icon">🏢</div>
+        <div class="email-content">
+          <div class="email-from">info@reminder.floridaregisteredagent.net</div>
+          <div class="email-subject">FL Annual Report — Kalyn's Kreations due 05/01/2026</div>
+          <div class="email-snippet">Required Florida annual report due by May 1. Failure to file may result in loss of good standing. File at sunbiz.org.</div>
+        </div>
+        <div class="email-action-tag">DUE 5/1</div>
       </div>
-      <div class="email-tier-header tier-review" style="margin-top:12px;">🟡 Needs Review</div>
-      <div class="email-item">
-        <div class="email-from">Amazon FBA Inventory</div>
-        <div class="email-subject">Long-term storage fees now start at 181 days (was 271)</div>
-        <div class="email-action">→ Check inventory age reports for any slow-moving Parrot Bliss SKUs</div>
+      <div class="email-item action">
+        <div class="email-icon">🏦</div>
+        <div class="email-content">
+          <div class="email-from">USAA.Customer.Service@mailcenter.usaa.com</div>
+          <div class="email-subject">You Have a New USAA Document (acct ending 0953)</div>
+          <div class="email-snippet">A new document is available in your USAA account. Log in to review — may require action.</div>
+        </div>
+        <div class="email-action-tag">REVIEW</div>
+      </div>
+      <div class="email-item action">
+        <div class="email-icon">🤖</div>
+        <div class="email-content">
+          <div class="email-from">product-updates@poe.com</div>
+          <div class="email-subject">Poe Knowledge Bases Deprecated — Migration Required</div>
+          <div class="email-snippet">Knowledge Bases on Poe are deprecated as of today. Any bots using Knowledge Bases need to migrate to alternative solutions immediately.</div>
+        </div>
+        <div class="email-action-tag">MIGRATE</div>
       </div>
     </div>
 
+    <div class="email-tier">
+      <div class="tier-label tier-review">👀 Needs Review</div>
+      <div class="email-item review">
+        <div class="email-icon">🧠</div>
+        <div class="email-content">
+          <div class="email-from">noreply@email.openai.com</div>
+          <div class="email-subject">Introducing GPT-5.5 — Better Coding, Computer Use &amp; Research</div>
+          <div class="email-snippet">A new class of intelligence for real work. Rolling out to Plus, Pro, Business and Enterprise users in ChatGPT and Codex now.</div>
+        </div>
+        <div class="email-action-tag tag-orange">EXPLORE</div>
+      </div>
+      <div class="email-item review">
+        <div class="email-icon">🎙️</div>
+        <div class="email-content">
+          <div class="email-from">noreply@podwise.ai</div>
+          <div class="email-subject">AI Daily Brief: What I Learned Testing GPT-5.5</div>
+          <div class="email-snippet">Podwise notes from 36-min Apr 24 episode covering GPT-5.5 testing results. Useful intelligence for your AI tool stack decisions.</div>
+        </div>
+        <div class="email-action-tag tag-orange">LISTEN</div>
+      </div>
+      <div class="email-item review">
+        <div class="email-icon">📊</div>
+        <div class="email-content">
+          <div class="email-from">notifications@tillermoney.discoursemail.com</div>
+          <div class="email-subject">[Tiller Beta] Monitor Yodlee Integration Changes</div>
+          <div class="email-snippet">Tiller rewrote their Yodlee integration. Monitor for stale or duplicate balances. Beta testers report normal behavior so far, but watch closely.</div>
+        </div>
+        <div class="email-action-tag tag-orange">MONITOR</div>
+      </div>
+    </div>
+
+    <div class="email-tier">
+      <div class="tier-label tier-fyi">ℹ️ FYI</div>
+      <div class="email-item">
+        <div class="email-icon">📦</div>
+        <div class="email-content">
+          <div class="email-from">shipment-tracking@amazon.com</div>
+          <div class="email-subject">Amazon Order Arriving TODAY — ETERART Heavy-Duty Aluminum</div>
+          <div class="email-snippet">Expected delivery Saturday April 25 to your West Palm Beach address.</div>
+        </div>
+      </div>
+      <div class="email-item">
+        <div class="email-icon">❤️</div>
+        <div class="email-content">
+          <div class="email-from">reaction@mg1.substack.com</div>
+          <div class="email-subject">2 New Readers Liked Your Substack Post</div>
+          <div class="email-snippet">Mahmoud Owies and OH both liked "When You Stop Healing and Start Living, Your Higher Self Finally Has Room to Speak." Newsletter engagement growing!</div>
+        </div>
+      </div>
+      <div class="email-item">
+        <div class="email-icon">🎬</div>
+        <div class="email-content">
+          <div class="email-from">HBOMax@mail.hbomax.com</div>
+          <div class="email-subject">Just Added to Max: Marty Supreme (Timothée Chalamet)</div>
+          <div class="email-snippet">Marty Mauser, a wily hustler with a dream no one respects, goes to hell and back in pursuit of greatness. Now streaming on Max.</div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- NEWS -->
-  <div class="section-gap">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0;">
-      <span class="section-title">📰 Daily News Digest</span>
-      <span style="font-size:12px;color:var(--text3);">24 stories · 8 categories · April 24, 2026</span>
+  <div style="font-size:11px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;color:var(--text3);margin-bottom:12px;display:flex;align-items:center;gap:8px;">
+    <span style="width:7px;height:7px;border-radius:50%;background:var(--purple);display:inline-block;"></span>
+    News Briefing — 24 Stories Across 8 Categories
+  </div>
+
+  <div class="news-grid">
+    <div class="news-col">
+      <div class="news-cat-header cat-world">🌍 World &amp; Politics</div>
+      <div class="news-stories">
+        <div class="news-story">
+          <div class="news-headline"><a href="https://www.cbsnews.com/live-updates/us-iran-war-trump-strait-of-hormuz-hezbollah-lebanon-israel-ceasefire/" target="_blank">Witkoff &amp; Kushner Head to Pakistan for US-Iran Talks — Day 56</a></div>
+          <div class="news-desc">Trump envoys travel for Iran negotiations; Iran FM says no formal meeting planned, but indirect talks proceed through Pakistani intermediaries.</div>
+        </div>
+        <div class="news-story">
+          <div class="news-headline"><a href="https://www.aljazeera.com/" target="_blank">EU Approves $106 Billion Loan Package for Ukraine</a></div>
+          <div class="news-desc">Massive two-year economic and military support package approved to cover Ukraine's critical needs as conflict continues.</div>
+        </div>
+        <div class="news-story">
+          <div class="news-headline"><a href="https://www.cnn.com/2026/04/24/world/live-news/iran-war-trump-israel-lebanon" target="_blank">WFP: Food Insecurity "Alarmingly High" — Gaza &amp; Sudan at Famine Risk</a></div>
+          <div class="news-desc">World Food Programme's 2026 report warns acute malnutrition is deeply entrenched in 10 countries, with Gaza and Sudan at acute famine risk.</div>
+        </div>
+      </div>
     </div>
-    <div class="news-grid">
 
-      <div class="news-category cat-world">
-        <div class="cat-header"><div class="cat-emoji">🌍</div><div class="cat-name">World & Politics</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-finance">💰 Finance &amp; Markets</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-world">IMF</span></div>
-          <div class="story-headline"><a href="https://www.imf.org/en/publications/weo/issues/2026/04/14/world-economic-outlook-april-2026" target="_blank">IMF: Middle East War Darkens Global Outlook — Growth Slows to 3.1%</a></div>
-          <div class="story-desc">Closure of the Strait of Hormuz and damage to hydrocarbon infrastructure threaten a major energy crisis. IMF raises global inflation forecast to 4.4% for 2026.</div>
+          <div class="news-headline"><a href="https://finance.yahoo.com/markets/stocks/live/stock-market-today-wednesday-april-22-dow-sp-500-nasdaq-trump-us-iran-ceasefire-230429476.html" target="_blank">S&amp;P 500 &amp; Nasdaq Hit Records — 7,165 &amp; 24,836 on Iran Peace Hope</a></div>
+          <div class="news-desc">Markets surged on peace talk optimism. Analysts forecast S&P +11.8% for full 2026, with earnings growth of 19.7%.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-world">CONFLICT</span></div>
-          <div class="story-headline">US-Iran Tensions Drive Oil to $96.50 — Markets Rattled</div>
-          <div class="story-desc">Maritime seizures and escalating conflict pushed WTI crude up nearly 4% Thursday. Software stocks fell sharply; ServiceNow down 18% citing Middle East disruption.</div>
+          <div class="news-headline"><a href="https://www.cnbc.com/2026/04/23/stock-market-today-live-updates.html" target="_blank">Nvidia Crosses $5 Trillion Market Cap — Up 5%, Eyes All-Time High Close</a></div>
+          <div class="news-desc">AI infrastructure demand continues to drive Nvidia to historic territory. Stock up 5% in Friday trading, on pace for a record close.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-world">SECURITY</span></div>
-          <div class="story-headline">North Korea Systematically Dismantles Global Sanctions with Russian-Chinese Support</div>
-          <div class="story-desc">Backed by Moscow and Beijing, North Korea advances weapons programs while undermining the international sanctions regime that once constrained it.</div>
+          <div class="news-headline"><a href="https://www.cnbc.com/2026/04/21/5-things-to-know-before-the-market-opens.html" target="_blank">X-energy Nuclear IPO Raises $1B+ — Largest Nuclear Offering on Record</a></div>
+          <div class="news-desc">Advanced nuclear reactor company X-energy opens at $30.11 after upsizing IPO at $23/share, signaling renewed investor appetite for nuclear energy.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-finance">
-        <div class="cat-header"><div class="cat-emoji">📈</div><div class="cat-name">Finance & Markets</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-amazon">📦 Amazon &amp; E-Commerce</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-finance">MARKETS</span></div>
-          <div class="story-headline"><a href="https://247wallst.com/investing/2026/04/23/stock-market-live-april-23-2026-sp-500-spy-pulls-back-from-all-time-highs/" target="_blank">S&P 500 Pulls Back 0.41% Thursday — Nasdaq 100 Futures Up 0.6% This Morning</a></div>
-          <div class="story-desc">S&P closed at 7,108.40; Dow lost 179 points. Intel AH surge (+19%) and Nasdaq 100 futures up this morning suggest a positive Friday open.</div>
+          <div class="news-headline"><a href="https://amzprep.com/amazon-fba-fees/" target="_blank">Amazon 3.5% Fuel Surcharge Live Since Apr 17 — ~$0.17/Unit for FBA</a></div>
+          <div class="news-desc">New fuel and logistics surcharge now applies to all FBA, MCF, and Buy with Prime (May 2). Sellers doing 10K units/mo face $1,500–$3,500 in new monthly costs.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-finance">EARNINGS</span></div>
-          <div class="story-headline"><a href="https://www.fool.com/coverage/stock-market-today/2026/04/23/stock-market-today-april-23-tesla-falls-after-lifting-2026-capex-guidance-for-ai-and-robotics/" target="_blank">Intel +19% AH on Q1 Beat; Texas Instruments +18% — Best Days in Decades</a></div>
-          <div class="story-desc">Intel smashed Q1 expectations; Tesla hinted at ~$3B spend with Intel on AI/robotics chips. TI saw its best single-day gain since October 19, 2000.</div>
+          <div class="news-headline"><a href="https://www.digitalcommerce360.com/2026/04/03/amazon-to-add-fuel-and-logistics-surcharges/" target="_blank">Aged Inventory Surcharges Now Start at 181 Days — 90 Days Earlier</a></div>
+          <div class="news-desc">Amazon tightened inventory rules significantly. New "Small Bulky" category may save up to $2/unit for qualifying products — check your catalog now.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-finance">OIL</span></div>
-          <div class="story-headline">Brent Crude Tops $105/barrel — Energy Sector Rallies</div>
-          <div class="story-desc">Middle East hostilities pushed Brent above $105 Thursday. Energy stocks rallied while growth and software names sold off. Oil remains the swing factor for markets.</div>
+          <div class="news-headline"><a href="https://www.pattern.com/blog/amazon-is-ending-fba-prep-services-in-2026" target="_blank">Amazon Ending In-House FBA Prep Services — Sellers Must Self-Prep or Use 3PL</a></div>
+          <div class="news-desc">Amazon is discontinuing its prep services. Sellers need a plan: either handle prep independently or contract with a third-party logistics provider.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-amazon">
-        <div class="cat-header"><div class="cat-emoji">📦</div><div class="cat-name">Amazon & E-Commerce</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-tech">🧠 AI &amp; Technology</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-amazon">FBA FEES</span></div>
-          <div class="story-headline"><a href="https://www.ecommercebytes.com/2026/04/02/amazon-tacks-on-3-5-fuel-surcharge-to-fba-seller-fees/" target="_blank">3.5% Fuel Surcharge Now Active — Avg +$0.17/unit for US FBA Orders</a></div>
-          <div class="story-desc">Live since April 17. Extends to Buy with Prime and MCF on May 2. Defect fees for late/misrouted shipments also up 30% vs 2025. Review pricing now.</div>
+          <div class="news-headline"><a href="https://www.cnbc.com/2026/04/23/openai-announces-latest-artificial-intelligence-model.html" target="_blank">OpenAI Launches GPT-5.5 — Coding, Computer Use &amp; Deep Research</a></div>
+          <div class="news-desc">GPT-5.5 rolling out to all paid ChatGPT tiers and Codex. Focus on coding performance, autonomous computer use, and extended research capabilities.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-amazon">POLICY</span></div>
-          <div class="story-headline"><a href="https://www.pattern.com/blog/amazon-is-ending-fba-prep-services-in-2026" target="_blank">FBA Prep Services Ended Jan 1 — All Sellers Must Self-Prep or Use 3PLs</a></div>
-          <div class="story-desc">Amazon no longer handles item labeling or prep services for US FBA. Sellers must now self-prep or partner with third-party logistics providers.</div>
+          <div class="news-headline"><a href="https://www.bloomberg.com/news/articles/2026-04-24/deepseek-unveils-newest-flagship-a-year-after-ai-breakthrough" target="_blank">DeepSeek Unveils V4 Flash &amp; V4 Pro — Top Coding Benchmarks, Agentic Leap</a></div>
+          <div class="news-desc">One year after disrupting Silicon Valley, China's DeepSeek drops its next flagship with strong reasoning, agentic task performance, and coding benchmarks.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-amazon">INVENTORY</span></div>
-          <div class="story-headline">Long-Term Storage Surcharges Now Kick In at 181 Days (Previously 271)</div>
-          <div class="story-desc">Amazon shifted to seller-specific inventory tracking March 31 and tightened storage timelines by 90 days. Check for slow-moving SKUs immediately to avoid penalties.</div>
+          <div class="news-headline"><a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank">Google Workspace Intelligence: AI Automation Across Docs, Sheets &amp; Gmail</a></div>
+          <div class="news-desc">New Workspace AI layer connects data across all Google tools for context-aware automation — drafting, summarizing, and taking action across your workflow.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-tech">
-        <div class="cat-header"><div class="cat-emoji">🤖</div><div class="cat-name">AI & Technology</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-gadget">🎧 Tech &amp; Gadgets</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-tech">AI TRENDS</span></div>
-          <div class="story-headline"><a href="https://www.technologyreview.com/2026/04/21/1135643/10-ai-artificial-intelligence-trends-technologies-research-2026/" target="_blank">MIT: 10 Things That Matter in AI Right Now — Agentic Teams, 1M+ Tokens</a></div>
-          <div class="story-desc">Context windows exceed 1M tokens across frontier models. Multi-agent cooperation and AI Scientist-v2 (which autonomously publishes peer-reviewed papers) lead the list.</div>
+          <div class="news-headline"><a href="https://www.gearpatrol.com/audio/best-new-tech-releases-4-19-26/" target="_blank">AirPods Max 2: H2 Chip, Better ANC, USB-C Wired Listening Mode</a></div>
+          <div class="news-desc">Apple's updated Max gain smarter noise cancellation and, finally, a USB-C wired option — a key add for audiophiles who want zero-latency listening.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-tech">INDUSTRY</span></div>
-          <div class="story-headline">SpaceX Acquires xAI for $250B; OpenAI Buys Media Company TBPN</div>
-          <div class="story-desc">Major AI consolidation: SpaceX acquires Musk's xAI in a landmark deal. OpenAI makes its first media acquisition. Alibaba's Qwen 3.5-Omni pushes open-source multimodal limits.</div>
+          <div class="news-headline"><a href="https://www.gearpatrol.com/audio/best-tech-audio-hi-fi-releases-2026-april-week-3/" target="_blank">Samsung Frame &amp; Frame Pro 2026 — Connections Built In, No External Box</a></div>
+          <div class="news-desc">Samsung's lifestyle TV gets a major quality-of-life update: all connections are now internal, eliminating the messy external media box from previous generations.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-tech">POLICY</span></div>
-          <div class="story-headline">Trump Admin Releases National AI Framework; Hinton Warns UN on Runaway AI</div>
-          <div class="story-desc">White House issued federal AI governance framework to guide Congress. Nobel laureate Geoffrey Hinton separately urged the UN to carefully guide AI development for societies.</div>
+          <div class="news-headline"><a href="https://www.slashgear.com/2144729/new-gadgets-worth-checking-out-april-2026/" target="_blank">GoPro Elite Cameras &amp; Kanto Tuk Grand Flag April's Best Gadgets</a></div>
+          <div class="news-desc">GoPro's new elite action camera lineup and Kanto Audio's Tuk Grand flagship powered speaker top April's must-watch gadget releases.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-gadget">
-        <div class="cat-header"><div class="cat-emoji">🔌</div><div class="cat-name">Tech & Gadgets</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-apple"> Mac &amp; iOS Software</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-gadget">APPLE CEO</span></div>
-          <div class="story-headline"><a href="https://9to5mac.com/2026/04/18/upcoming-apple-product-launches-worth-waiting-for-later-this-year/" target="_blank">Tim Cook Stepping Down Sept 1 — John Ternus Named Next Apple CEO</a></div>
-          <div class="story-desc">Apple's hardware engineering chief John Ternus takes over as CEO September 1. Cook has led Apple since 2011. Apple's product roadmap continues with 15+ new products coming.</div>
+          <div class="news-headline"><a href="https://9to5mac.com/2026/04/09/apple-releases-macos-26-4-1-software-update-details-here/" target="_blank">macOS 26.4.1 Fixes Critical Wi-Fi Bug on M5 MacBook Air &amp; Pro</a></div>
+          <div class="news-desc">Update resolves failure to join 802.1X enterprise networks on M5 Mac hardware when using content filter extensions. Install if you're on M5.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-gadget">HARDWARE</span></div>
-          <div class="story-headline"><a href="https://appleinsider.com/articles/26/04/23/apple-is-reportedly-working-on-six-new-product-categories" target="_blank">Apple Working on 6 New Product Categories — iPhone Fold Confirmed for Fall</a></div>
-          <div class="story-desc">Apple's first foldable iPhone arrives alongside iPhone 18 Pro. HomePad smart hub (7" screen), HomeKit camera, AirPods Pro 3 with IR cameras also on the slate.</div>
+          <div class="news-headline"><a href="https://www.prismnews.com/hobbies/mobile-gaming/apple-mandates-ios-26-sdk-and-xcode-26-for-app-store-submissions" target="_blank">Apple Mandates iOS 26 SDK for App Store Starting April 28</a></div>
+          <div class="news-desc">All new App Store submissions must use iOS 26 SDK. Apps automatically get the Liquid Glass UI unless developers explicitly opt out — major UX shift incoming.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-gadget">PRODUCT</span></div>
-          <div class="story-headline">AirTag 2: 50% Better Precision Finding, 50% Louder — Part of 12 2026 Apple Products</div>
-          <div class="story-desc">AirTag 2 launched January 2026 with second-gen UWB chip and upgraded Bluetooth. Also released: MacBook Neo, iPhone 17e with A19 chip and MagSafe, updated iPad Air M4.</div>
+          <div class="news-headline"><a href="https://9to5mac.com/2026/02/03/apple-to-update-minimum-sdk-requirements-for-all-app-store-submissions/" target="_blank">WWDC 2026 Starts June 8 — iOS 27 Preview &amp; Japan Sideloading Expands</a></div>
+          <div class="news-desc">Apple set June 8 for WWDC 2026 iOS 27 unveiling. iOS 26.2 brings alternative app marketplace compliance to Japan under the Mobile Software Competition Act.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-apple">
-        <div class="cat-header"><div class="cat-emoji">🍎</div><div class="cat-name">Mac & iOS Software</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-parrot">🦜 Parrots &amp; Aviculture</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-apple">UPDATE</span></div>
-          <div class="story-headline"><a href="https://www.macrumors.com/2026/04/22/apple-releases-ios-26-4-2/" target="_blank">iOS 26.4.2 & iPadOS 26.4.2 Released April 22 — Install Now</a></div>
-          <div class="story-desc">Latest point release ships security patches and bug fixes. macOS 26.4.1 also available. Prior version fixed an iCloud sync bug affecting first and third-party apps.</div>
+          <div class="news-headline"><a href="https://news.mongabay.com/short-article/2026/04/record-kakapo-breeding-season-with-95-rare-parrot-hatchlings-photo-of-the-week/" target="_blank">Record Kākāpō Season: 105 Chicks Hatched — Smashes 2019 Record of 73</a></div>
+          <div class="news-desc">New Zealand's critically endangered kākāpō just had its most successful breeding season on record. Conservationists say it hints at a genuine population comeback.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-apple">BETA</span></div>
-          <div class="story-headline"><a href="https://www.macrumors.com/2026/04/04/ios-26-5-new-iphone-features/" target="_blank">iOS 26.5 Beta: Suggested Places + Ads Coming to Apple Maps</a></div>
-          <div class="story-desc">iOS/macOS 26.5 beta introduces Suggested Places for nearby recommendations. Apple is also adding advertising to the Maps app — a controversial first for the platform.</div>
+          <div class="news-headline"><a href="https://parrots.org/news/" target="_blank">World Parrot Trust Study Exposes Vast Scale of Illegal Live Bird Trade</a></div>
+          <div class="news-desc">New WPT/University of Hong Kong research reveals the illegal live parrot trade is far larger and more underreported than previously understood globally.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-apple">DEV DEADLINE</span></div>
-          <div class="story-headline">App Store Deadline Monday: All New Apps Must Target iOS/tvOS/watchOS 26 SDK</div>
-          <div class="story-desc">Starting April 28, all apps submitted to App Store Connect must be built with iOS 26, tvOS 26, visionOS 26, and watchOS 26 SDKs. Last chance to comply this weekend.</div>
+          <div class="news-headline"><a href="https://www.oneworldnews.com/own-pet/world-parrot-day-2026/" target="_blank">World Parrot Day 2026 — 1 in 3 Species Face Extinction Risk</a></div>
+          <div class="news-desc">World Parrot Day highlights the urgent reality: approximately one-third of all parrot species are threatened with extinction in the wild without conservation action.</div>
         </div>
       </div>
+    </div>
 
-      <div class="news-category cat-parrot">
-        <div class="cat-header"><div class="cat-emoji">🦜</div><div class="cat-name">Parrots & Aviculture</div></div>
+    <div class="news-col">
+      <div class="news-cat-header cat-health">🧬 Health &amp; Longevity</div>
+      <div class="news-stories">
         <div class="news-story">
-          <div><span class="story-tag tag-parrot">RECORD</span></div>
-          <div class="story-headline"><a href="https://news.mongabay.com/short-article/2026/04/record-kakapo-breeding-season-with-95-rare-parrot-hatchlings-photo-of-the-week/" target="_blank">Record Kākāpō Season: 95 Hatchlings Smash Previous Record of 73</a></div>
-          <div class="story-desc">2026 is the biggest breeding season in history for the critically endangered kākāpō. A first-ever nest livestream attracted 100,000+ viewers globally. 🔥 Hot content angle for Parrot Bliss!</div>
+          <div class="news-headline"><a href="https://www.globenewswire.com/news-release/2026/04/23/3279692/0/en/The-Longevity-Trade-Is-No-Longer-a-Buzzword-It-s-a-120-Billion-Market-and-the-FDA-Just-Cleared-the-First-Cellular-Rejuvenation-Trial.html" target="_blank">FDA Clears First Cellular Rejuvenation Trial — Dialing Back Cell Aging in Humans</a></div>
+          <div class="news-desc">Historic trial will test whether rolling back cellular age can safely refresh aged tissues — beginning with 12 glaucoma patients in a phased study.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-parrot">RECOVERY</span></div>
-          <div class="story-headline">Puerto Rican Amazon Population Surpasses 900 — Highest Since Before 1973</div>
-          <div class="story-desc">The species once reduced to just 13 wild individuals now exceeds 900. One of conservation's greatest comeback stories, now validated with 2026 census data.</div>
+          <div class="news-headline"><a href="https://scitechdaily.com/researchers-have-found-a-dietary-compound-that-increases-longevity/" target="_blank">Phytoene (Tomatoes, Carrots) Extends Lifespan 10–18% in Lab Studies</a></div>
+          <div class="news-desc">Univ. of Seville/Kent: the carotenoid phytoene extends lifespan significantly and reduces toxic amyloid-β42 effects 30–40% — promising Alzheimer's implications.</div>
         </div>
         <div class="news-story">
-          <div><span class="story-tag tag-parrot">AVICULTURE</span></div>
-          <div class="story-headline"><a href="https://lafeber.com/pet-birds/lafebers-global-parrot-conservation-spotlight-march-2026-indonesias-moluccan-cockatoos/" target="_blank">Indonesia's "Parrot Squad" Protects Moluccan Cockatoos, Develops Ecotourism</a></div>
-          <div class="story-desc">KKI NGO partnered with the Huaulu community to create a parrot protection patrol and ecotour program as an alternative income source for Moluccan cockatoo conservation.</div>
+          <div class="news-headline"><a href="https://www.nature.com/articles/d41586-026-01024-7" target="_blank">Longevity Market Hits $120B — Private Investment Doubled to $8.49B in 2025</a></div>
+          <div class="news-desc">The longevity sector is booming. Researchers now frame aging as a "loss of coordination" between systems — a new paradigm shifting treatment approaches.</div>
         </div>
       </div>
-
-      <div class="news-category cat-health">
-        <div class="cat-header"><div class="cat-emoji">🧬</div><div class="cat-name">Health & Longevity</div></div>
-        <div class="news-story">
-          <div><span class="story-tag tag-health">MILESTONE</span></div>
-          <div class="story-headline"><a href="https://www.nature.com/articles/d41586-026-01024-7" target="_blank">FDA Clears First-Ever Cellular Rejuvenation Trial in Humans</a></div>
-          <div class="story-desc">A longevity biotech will test cellular reprogramming in up to 12 glaucoma patients. The $120B longevity market reaches its most significant clinical milestone yet.</div>
-        </div>
-        <div class="news-story">
-          <div><span class="story-tag tag-health">RESEARCH</span></div>
-          <div class="story-headline"><a href="https://www.globenewswire.com/news-release/2026/04/23/3279692/0/en/The-Longevity-Trade-Is-No-Longer-a-Buzzword-It-s-a-120-Billion-Market-and-the-FDA-Just-Cleared-the-First-Cellular-Rejuvenation-Trial.html" target="_blank">α-Klotho Anti-Aging Therapy Shows Promise for Alzheimer's and Cancer</a></div>
-          <div class="story-desc">Avaí Bio's genetically modified cells overproducing α-Klotho protein advance toward clinical use. Presenting new data at September's Second Annual Klotho Conference.</div>
-        </div>
-        <div class="news-story">
-          <div><span class="story-tag tag-health">MARKET</span></div>
-          <div class="story-headline">Longevity Investment Doubles to $8.49B — Market Projected at $29.7B by 2034</div>
-          <div class="story-desc">Private investment in longevity science surged. Scientists are shifting from "fixing aging" to preserving biological coordination. Gut microbiome research also advancing rapidly.</div>
-        </div>
-      </div>
-
     </div>
   </div>
 
   <div class="footer">
-    <div>🤖 Generated by Claude · Friday, April 24, 2026 · Loxahatchee, FL 33470</div>
-    <div>Sources: NWS Miami · IMF · CNBC · Amazon Seller Central · MIT Technology Review · MacRumors · Mongabay · Nature · <a href="https://carlg777.github.io/morning-briefing/" target="_blank">Live Dashboard ↗</a></div>
+    <div>
+      <div class="footer-weather">📍 Loxahatchee, FL — 68°F Fair now · High 87° · PM Thunderstorm Risk 5–6 PM (26%)</div>
+      <div>Generated Saturday, April 25, 2026 &nbsp;·&nbsp; Sources: NWS/MFL, Gmail, Google Calendar, Web Search &nbsp;·&nbsp; Claude Cowork</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-size:13px;color:var(--text2);">🌐 <a href="https://carlg777.github.io/morning-briefing/" style="color:var(--blue);text-decoration:none;">carlg777.github.io/morning-briefing</a></div>
+    </div>
   </div>
-
 </div>
 
 <script>
-const hourlyData = [
-  {time:"2026-04-24T06:00:00-04:00",temp:62,forecast:"Partly Sunny",wind:"2 mph",windDir:"E",rain:6,isDaytime:true},
-  {time:"2026-04-24T07:00:00-04:00",temp:63,forecast:"Mostly Sunny",wind:"2 mph",windDir:"E",rain:1,isDaytime:true},
-  {time:"2026-04-24T08:00:00-04:00",temp:64,forecast:"Mostly Sunny",wind:"2 mph",windDir:"E",rain:0,isDaytime:true},
-  {time:"2026-04-24T09:00:00-04:00",temp:69,forecast:"Mostly Sunny",wind:"3 mph",windDir:"E",rain:0,isDaytime:true},
-  {time:"2026-04-24T10:00:00-04:00",temp:75,forecast:"Sunny",wind:"3 mph",windDir:"SE",rain:0,isDaytime:true},
-  {time:"2026-04-24T11:00:00-04:00",temp:78,forecast:"Sunny",wind:"6 mph",windDir:"SE",rain:4,isDaytime:true},
-  {time:"2026-04-24T12:00:00-04:00",temp:80,forecast:"Sunny",wind:"6 mph",windDir:"SE",rain:7,isDaytime:true},
-  {time:"2026-04-24T13:00:00-04:00",temp:82,forecast:"Sunny",wind:"6 mph",windDir:"SE",rain:9,isDaytime:true},
-  {time:"2026-04-24T14:00:00-04:00",temp:83,forecast:"Mostly Sunny",wind:"6 mph",windDir:"SE",rain:6,isDaytime:true},
-  {time:"2026-04-24T15:00:00-04:00",temp:83,forecast:"Mostly Sunny",wind:"6 mph",windDir:"SE",rain:10,isDaytime:true},
-  {time:"2026-04-24T16:00:00-04:00",temp:83,forecast:"Slight Chance T-Storms",wind:"5 mph",windDir:"SE",rain:16,isDaytime:true},
-  {time:"2026-04-24T17:00:00-04:00",temp:83,forecast:"Chance T-Storms",wind:"5 mph",windDir:"E",rain:26,isDaytime:true},
-  {time:"2026-04-24T18:00:00-04:00",temp:81,forecast:"Chance T-Storms",wind:"3 mph",windDir:"E",rain:26,isDaytime:false},
-  {time:"2026-04-24T19:00:00-04:00",temp:78,forecast:"Slight Chance T-Storms",wind:"3 mph",windDir:"SE",rain:22,isDaytime:false},
-  {time:"2026-04-24T20:00:00-04:00",temp:76,forecast:"Mostly Cloudy",wind:"2 mph",windDir:"E",rain:12,isDaytime:false},
-  {time:"2026-04-24T21:00:00-04:00",temp:72,forecast:"Mostly Cloudy",wind:"2 mph",windDir:"E",rain:9,isDaytime:false},
-  {time:"2026-04-24T22:00:00-04:00",temp:71,forecast:"Partly Cloudy",wind:"2 mph",windDir:"SE",rain:7,isDaytime:false},
-  {time:"2026-04-24T23:00:00-04:00",temp:69,forecast:"Partly Cloudy",wind:"2 mph",windDir:"SE",rain:6,isDaytime:false}
-];
-
-function getTempClass(t){return t<50?'temp-cold':t<80?'temp-mild':t<90?'temp-warm':'temp-hot';}
-function getRainClass(r){return r<=20?'rain-low':r<=50?'rain-med':r<=70?'rain-high':'rain-veryhigh';}
-function getEmoji(f,d){
-  const s=f.toLowerCase();
-  if(s.includes('thunder')||s.includes('t-storm'))return '⛈️';
-  if(s.includes('shower'))return '🌦️';
-  if(s.includes('rain'))return '🌧️';
-  if(s.includes('partly')&&d)return '⛅';
-  if(s.includes('partly')&&!d)return '🌙';
-  if(s.includes('mostly cloudy'))return d?'🌥️':'☁️';
-  if(s.includes('mostly sunny')||s.includes('mostly clear'))return d?'🌤️':'🌙';
-  if(s.includes('sunny')||s.includes('clear'))return d?'☀️':'🌙';
-  if(s.includes('cloudy'))return '☁️';
-  return d?'🌤️':'🌙';
+function updateClock() {
+  const now = new Date();
+  const h = now.getHours(), m = now.getMinutes().toString().padStart(2,'0');
+  const ampm = h >= 12 ? 'PM' : 'AM', h12 = h % 12 || 12;
+  document.getElementById('clock').textContent = h12 + ':' + m + ' ' + ampm;
+  let g = 'Good morning, Carl ☀️';
+  if (h >= 12 && h < 17) g = 'Good afternoon, Carl 🌤️';
+  else if (h >= 17) g = 'Good evening, Carl 🌙';
+  document.getElementById('greeting').textContent = g;
 }
-function fmtHour(t){const d=new Date(t);const h=d.getHours();return `${h%12||12} ${h>=12?'PM':'AM'}`;}
+updateClock();
+setInterval(updateClock, 30000);
 
-const row=document.getElementById('hourly-row');
-const nowH=new Date().getHours();
-let nowCard=null;
-hourlyData.forEach(p=>{
-  const pH=new Date(p.time).getHours();
-  const isNow=pH===nowH;
-  const c=document.createElement('div');
-  c.className='hour-card'+(isNow?' now-card':'');
-  c.innerHTML=`${isNow?'<div class="now-badge">NOW</div>':''}<div class="hour-time">${fmtHour(p.time)}</div><div class="hour-emoji">${getEmoji(p.forecast,p.isDaytime)}</div><div class="hour-temp ${getTempClass(p.temp)}">${p.temp}°</div><div class="hour-rain ${getRainClass(p.rain)}">💧 ${p.rain}%</div><div class="hour-wind">${p.windDir} ${p.wind}</div>`;
-  row.appendChild(c);
-  if(isNow)nowCard=c;
-});
-if(nowCard)setTimeout(()=>nowCard.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}),400);
-
-function tick(){
-  const n=new Date();
-  const h=n.getHours();const m=String(n.getMinutes()).padStart(2,'0');
-  document.getElementById('clock').textContent=`${h%12||12}:${m}`;
-  document.getElementById('greeting').textContent=(h<12?'Good Morning, Carl ☀️':h<17?'Good Afternoon, Carl 🌤️':'Good Evening, Carl 🌙');
+function highlightNow() {
+  const cur = new Date().getHours();
+  document.querySelectorAll('.hour-card').forEach(c => {
+    if (parseInt(c.dataset.hour) === cur) {
+      c.classList.add('now');
+      const b = document.createElement('div');
+      b.className = 'now-badge'; b.textContent = 'NOW';
+      c.insertBefore(b, c.firstChild);
+      setTimeout(() => c.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'}), 500);
+    }
+  });
 }
-tick();setInterval(tick,1000);
+highlightNow();
 </script>
 </body>
 </html>
