@@ -3,159 +3,153 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Morning Briefing — Tuesday, August 25, 2026</title>
+<title>Morning Briefing — Aug 26, 2026</title>
 <style>
-:root{
-  --bg:#0a0a0a; --card:#1c1c1e; --card2:#232326; --line:#2c2c2e;
-  --t1:#f5f5f7; --t2:#b0b0b5; --t3:#6e6e73;
-  --red:#FF453A; --orange:#FF9F0A; --blue:#0A84FF; --green:#30D158;
-  --purple:#BF5AF2; --yellow:#FFD60A; --cyan:#64D2FF; --lav:#AC8EFF;
-  --silver:#C8C8D2; --pink:#FF375F;
-}
 *{box-sizing:border-box;margin:0;padding:0}
-body{
-  background:var(--bg); color:var(--t1);
-  font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Inter,system-ui,sans-serif;
-  -webkit-font-smoothing:antialiased; line-height:1.5; padding:32px 20px 80px;
+:root{
+--bg:#0a0a0a;--card:#1c1c1e;--card2:#232326;--line:#2c2c2e;
+--t1:#f5f5f7;--t2:#b0b0b5;--t3:#6e6e73;
+--red:#FF453A;--orange:#FF9F0A;--blue:#0A84FF;--green:#30D158;--purple:#BF5AF2;
+--yellow:#FFD60A;--cyan:#64D2FF;--pink:#FF375F;--lilac:#AC8EFF;--silver:#C8C8D2;
 }
-.wrap{max-width:1080px;margin:0 auto}
+body{background:var(--bg);color:var(--t1);
+font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",Arial,sans-serif;
+-webkit-font-smoothing:antialiased;line-height:1.5;padding:32px 20px 64px}
+.wrap{max-width:1100px;margin:0 auto}
+
 header{margin-bottom:28px}
-.greet{font-size:44px;font-weight:700;letter-spacing:-1.4px;line-height:1.08}
-.greet .accent{color:var(--orange)}
-.subgreet{color:var(--t2);font-size:16px;margin-top:8px;letter-spacing:-.2px}
-.card{
-  background:var(--card); border:1px solid var(--line); border-radius:18px;
-  padding:24px; margin-bottom:20px;
-}
-.card h2{
-  font-size:13px;font-weight:600;letter-spacing:1.4px;text-transform:uppercase;
-  color:var(--t3);margin-bottom:18px;display:flex;align-items:center;gap:9px;
-}
-.card h2 .n{color:var(--t3);font-weight:500;letter-spacing:.4px;text-transform:none;font-size:12px}
-.alert{
-  background:linear-gradient(135deg,rgba(255,159,10,.16),rgba(255,69,58,.10));
-  border:1px solid rgba(255,159,10,.42); border-radius:16px; padding:18px 20px; margin-bottom:20px;
-}
-.alert-title{font-size:15px;font-weight:700;color:var(--orange);letter-spacing:-.2px;margin-bottom:8px}
+.greet{font-size:44px;font-weight:700;letter-spacing:-1.2px;margin-bottom:6px}
+.subgreet{color:var(--t2);font-size:16px;font-weight:400}
+.subgreet b{color:var(--t1);font-weight:600}
+
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:24px;margin-bottom:20px}
+.card h2{font-size:13px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;
+color:var(--t3);margin-bottom:18px;display:flex;align-items:center;gap:8px}
+.card h2 .dot{width:7px;height:7px;border-radius:50%;background:var(--blue)}
+
+.alert{background:linear-gradient(135deg,rgba(255,69,58,.14),rgba(255,159,10,.08));
+border:1px solid rgba(255,69,58,.35);border-radius:16px;padding:18px 22px;margin-bottom:20px}
+.alert-title{font-size:12px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+color:var(--red);margin-bottom:12px}
 .alert ul{list-style:none}
-.alert li{color:var(--t1);font-size:14.5px;padding:4px 0 4px 18px;position:relative}
-.alert li:before{content:"\203A";position:absolute;left:2px;color:var(--orange);font-weight:700}
-.now-row{display:flex;align-items:flex-start;gap:28px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--line);margin-bottom:20px}
-.now-temp{font-size:66px;font-weight:250;letter-spacing:-3px;line-height:1;color:var(--t1)}
-.now-cond{font-size:17px;color:var(--t1);font-weight:500;margin-top:6px}
-.now-loc{font-size:13px;color:var(--t3);margin-top:3px}
-.now-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(96px,1fr));gap:14px 22px;flex:1;min-width:280px}
-.stat .lbl{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--t3);margin-bottom:3px}
-.stat .val{font-size:16px;font-weight:600;color:var(--t1)}
-.sub{font-size:12px;letter-spacing:.8px;text-transform:uppercase;color:var(--t3);margin:4px 0 12px;font-weight:600}
-.hourly{display:flex;gap:9px;overflow-x:auto;padding:10px 2px 14px;scrollbar-width:thin}
+.alert li{padding:8px 0 8px 22px;position:relative;font-size:15px;color:var(--t1);border-top:1px solid rgba(255,255,255,.05)}
+.alert li:first-child{border-top:none}
+.alert li:before{content:"\25B8";position:absolute;left:0;color:var(--orange);font-weight:700}
+.alert li span{color:var(--t2);font-size:13.5px}
+
+.now-row{display:flex;flex-wrap:wrap;gap:28px;align-items:flex-start;
+padding-bottom:22px;margin-bottom:22px;border-bottom:1px solid var(--line)}
+.now-temp{font-size:66px;font-weight:250;letter-spacing:-3px;line-height:1}
+.now-cond{font-size:17px;color:var(--t1);margin-top:6px;font-weight:500}
+.now-loc{font-size:12.5px;color:var(--t3);margin-top:4px}
+.now-metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(112px,1fr));
+gap:14px 20px;flex:1;min-width:300px}
+.metric{background:var(--card2);border-radius:11px;padding:10px 13px}
+.metric .k{font-size:10.5px;letter-spacing:1.1px;text-transform:uppercase;color:var(--t3);font-weight:600}
+.metric .v{font-size:17px;font-weight:600;margin-top:3px}
+
+.sub{font-size:11.5px;font-weight:700;letter-spacing:1.4px;text-transform:uppercase;
+color:var(--t3);margin:0 0 12px}
+.hourly{display:flex;gap:10px;overflow-x:auto;padding:10px 0 10px;scrollbar-width:thin}
 .hourly::-webkit-scrollbar{height:6px}
-.hourly::-webkit-scrollbar-thumb{background:var(--line);border-radius:3px}
-.hr{
-  flex:0 0 78px;background:var(--card2);border:1px solid var(--line);border-radius:13px;
-  padding:11px 6px;text-align:center;position:relative;
-}
-.hr.now{border-color:var(--orange);background:rgba(255,159,10,.10)}
-.hr .badge{
-  position:absolute;top:-8px;left:50%;transform:translateX(-50%);
-  background:var(--orange);color:#0a0a0a;font-size:8.5px;font-weight:800;
-  letter-spacing:.6px;padding:2px 7px;border-radius:6px;
-}
-.hr .t{font-size:11px;color:var(--t2);font-weight:600;margin-bottom:5px}
-.hr .e{font-size:21px;line-height:1.1;margin-bottom:4px}
-.hr .tp{font-size:18px;font-weight:600;letter-spacing:-.5px}
-.hr .rn{font-size:11px;font-weight:600;margin-top:4px}
-.hr .wd{font-size:9.5px;color:var(--t3);margin-top:3px}
+.hourly::-webkit-scrollbar-thumb{background:#333;border-radius:3px}
+.hr{flex:0 0 84px;background:var(--card2);border:1px solid transparent;border-radius:13px;
+padding:12px 8px;text-align:center;position:relative}
+.hr.now{border-color:var(--blue);background:rgba(10,132,255,.12)}
+.hr .badge{position:absolute;top:-8px;left:50%;transform:translateX(-50%);
+background:var(--blue);color:#fff;font-size:8.5px;font-weight:800;letter-spacing:.9px;
+padding:2px 7px;border-radius:6px}
+.hr .h{font-size:11.5px;color:var(--t2);font-weight:600}
+.hr .e{font-size:22px;margin:6px 0 4px}
+.hr .tp{font-size:18px;font-weight:650;letter-spacing:-.4px}
+.hr .rn{font-size:11px;font-weight:600;margin-top:5px}
+.hr .wd{font-size:10px;color:var(--t3);margin-top:3px}
+
 .cold{color:var(--cyan)} .mild{color:var(--t1)} .warm{color:var(--orange)} .hot{color:var(--red)}
-.r-lo{color:var(--green)} .r-md{color:var(--yellow)} .r-hi{color:var(--orange)} .r-vhi{color:var(--red)}
-table.wk{width:100%;border-collapse:collapse;margin-top:2px}
-table.wk td{padding:11px 6px;border-bottom:1px solid var(--line);font-size:14px;vertical-align:middle}
-table.wk tr:last-child td{border-bottom:none}
-table.wk tr.today td{background:rgba(255,159,10,.07)}
-table.wk tr.today td:first-child{color:var(--orange);font-weight:700;border-radius:9px 0 0 9px}
-table.wk tr.today td:last-child{border-radius:0 9px 9px 0}
-.d-day{font-weight:600;width:110px;color:var(--t1)}
-.d-emo{width:38px;font-size:19px;text-align:center}
-.d-tmp{width:104px;font-weight:600;letter-spacing:-.3px}
-.d-tmp .lo{color:var(--t3);font-weight:500}
-.d-desc{color:var(--t2);font-size:13.5px}
-.d-rain{width:64px;text-align:right;font-weight:600;font-size:13px}
-.prio{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line)}
-.prio:last-child{border-bottom:none;padding-bottom:0}
-.prio:first-child{padding-top:0}
-.pnum{
-  flex:0 0 28px;height:28px;border-radius:9px;background:var(--card2);
-  display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:var(--orange);
-}
-.ptitle{font-size:15.5px;font-weight:600;letter-spacing:-.2px;margin-bottom:4px}
-.pdesc{font-size:13.5px;color:var(--t2)}
-.empty{
-  text-align:center;padding:30px 14px;color:var(--t3);font-size:14.5px;
-  border:1px dashed var(--line);border-radius:13px;
-}
-.empty .big{font-size:30px;display:block;margin-bottom:9px;opacity:.55}
-.tier{margin-bottom:20px}
+.r-low{color:var(--green)} .r-med{color:var(--yellow)} .r-high{color:var(--orange)} .r-vhigh{color:var(--red)}
+
+.week{margin-top:26px;padding-top:22px;border-top:1px solid var(--line)}
+.wrow{display:grid;grid-template-columns:82px 34px 100px 1fr 54px;gap:12px;align-items:center;
+padding:11px 12px;border-radius:10px;font-size:14px}
+.wrow:nth-child(even){background:rgba(255,255,255,.022)}
+.wrow.today{background:rgba(10,132,255,.11);box-shadow:inset 0 0 0 1px rgba(10,132,255,.3)}
+.wrow .d{font-weight:650;font-size:13.5px}
+.wrow .ic{font-size:19px;text-align:center}
+.wrow .hl{font-weight:600;font-size:14px;white-space:nowrap}
+.wrow .hl .lo{color:var(--t3);font-weight:400}
+.wrow .ds{color:var(--t2);font-size:13px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.wrow .pp{text-align:right;font-weight:650;font-size:13px}
+
+.pri{display:flex;gap:15px;padding:16px 0;border-top:1px solid var(--line)}
+.pri:first-of-type{border-top:none;padding-top:0}
+.pri .n{flex:0 0 32px;height:32px;border-radius:9px;background:var(--card2);
+display:flex;align-items:center;justify-content:center;font-weight:750;font-size:15px;color:var(--blue)}
+.pri .b{flex:1}
+.pri .t{font-weight:640;font-size:16px;margin-bottom:4px}
+.pri .x{color:var(--t2);font-size:14px}
+.pri .why{color:var(--t3);font-size:12.5px;margin-top:5px;font-style:italic}
+
+.empty{color:var(--t3);font-size:15px;padding:16px;background:var(--card2);
+border-radius:11px;text-align:center}
+
+.tier{margin-bottom:22px}
 .tier:last-child{margin-bottom:0}
-.tier-h{font-size:11.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
-.dot{width:7px;height:7px;border-radius:50%;display:inline-block}
-.t-act{color:var(--red)} .t-act .dot{background:var(--red)}
-.t-rev{color:var(--yellow)} .t-rev .dot{background:var(--yellow)}
-.t-fyi{color:var(--t3)} .t-fyi .dot{background:var(--t3)}
-.mail{background:var(--card2);border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin-bottom:9px}
-.mail:last-child{margin-bottom:0}
-.mail-top{display:flex;justify-content:space-between;gap:12px;align-items:baseline;flex-wrap:wrap}
-.mail-sub{font-size:14.5px;font-weight:600;letter-spacing:-.2px}
-.mail-from{font-size:11.5px;color:var(--t3);white-space:nowrap}
-.mail-snip{font-size:13px;color:var(--t2);margin-top:5px}
-.mail-act{
-  font-size:12.5px;color:var(--green);margin-top:8px;padding-top:8px;
-  border-top:1px solid var(--line);
-}
-.mail-act b{color:var(--green);font-weight:600}
-.toggle{
-  cursor:pointer;font-size:11.5px;color:var(--blue);margin-top:8px;
-  user-select:none;font-weight:600;letter-spacing:.2px;display:inline-block;
-}
-.reply{
-  display:none;margin-top:9px;background:#141416;border:1px solid var(--line);
-  border-radius:10px;padding:12px;font-size:13px;color:var(--t2);white-space:pre-wrap;
-  font-family:ui-monospace,SFMono-Regular,Menlo,monospace;line-height:1.55;
-}
-.reply.open{display:block}
-.cat{margin-bottom:22px}
+.tier-h{font-size:11.5px;font-weight:750;letter-spacing:1.3px;text-transform:uppercase;
+margin-bottom:11px;display:flex;align-items:center;gap:8px}
+.tier-h .cnt{background:var(--card2);color:var(--t2);font-size:10.5px;padding:1px 7px;
+border-radius:20px;letter-spacing:0}
+.act .tier-h{color:var(--red)} .rev .tier-h{color:var(--orange)} .fyi .tier-h{color:var(--t3)}
+.mail{background:var(--card2);border-radius:12px;padding:13px 15px;margin-bottom:9px;
+border-left:3px solid transparent}
+.act .mail{border-left-color:var(--red)}
+.rev .mail{border-left-color:var(--orange)}
+.fyi .mail{border-left-color:#3a3a3c;padding:10px 14px}
+.mail .from{font-size:11.5px;color:var(--t3);margin-bottom:3px;font-weight:500}
+.mail .subj{font-weight:600;font-size:14.5px;margin-bottom:4px}
+.mail .snip{color:var(--t2);font-size:13px}
+.mail .do{margin-top:9px;font-size:12.5px;color:var(--green);font-weight:600}
+.mail .do:before{content:"\2192  "}
+.fyi-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:8px}
+.fyi-list .mail{margin:0}
+.fyi-list .subj{font-size:13px;font-weight:550}
+
+.cat{margin-bottom:26px}
 .cat:last-child{margin-bottom:0}
-.cat-h{font-size:12.5px;font-weight:700;letter-spacing:1.1px;text-transform:uppercase;margin-bottom:11px;padding-bottom:7px;border-bottom:1px solid var(--line)}
+.cat-h{font-size:12.5px;font-weight:750;letter-spacing:1.4px;text-transform:uppercase;
+margin-bottom:12px;padding-bottom:8px;border-bottom:1px solid var(--line)}
 .cat-world{color:var(--red)} .cat-finance{color:var(--yellow)} .cat-amazon{color:var(--blue)}
-.cat-tech{color:var(--cyan)} .cat-gadget{color:var(--lav)} .cat-apple{color:var(--silver)}
+.cat-tech{color:var(--cyan)} .cat-gadget{color:var(--lilac)} .cat-apple{color:var(--silver)}
 .cat-parrot{color:var(--green)} .cat-health{color:var(--pink)}
-.story{padding:10px 0;border-bottom:1px solid rgba(44,44,46,.55)}
-.story:last-child{border-bottom:none}
-.tag{
-  display:inline-block;font-size:9.5px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;
-  padding:2.5px 7px;border-radius:5px;margin-right:9px;vertical-align:middle;
-}
-.tag.world{background:rgba(255,69,58,.16);color:var(--red)}
-.tag.finance{background:rgba(255,214,10,.16);color:var(--yellow)}
-.tag.amazon{background:rgba(10,132,255,.16);color:var(--blue)}
-.tag.tech{background:rgba(100,210,255,.16);color:var(--cyan)}
-.tag.gadget{background:rgba(172,142,255,.16);color:var(--lav)}
-.tag.apple{background:rgba(200,200,210,.14);color:var(--silver)}
-.tag.parrot{background:rgba(48,209,88,.16);color:var(--green)}
-.tag.health{background:rgba(255,55,95,.16);color:var(--pink)}
-.story a.hl{color:var(--t1);text-decoration:none;font-size:14.5px;font-weight:600;letter-spacing:-.2px}
-.story a.hl:hover{color:var(--blue)}
-.story p{font-size:13px;color:var(--t2);margin-top:5px}
-.src{font-size:11px;color:var(--t3);margin-top:4px}
-footer{
-  text-align:center;color:var(--t3);font-size:12.5px;margin-top:34px;
-  padding-top:22px;border-top:1px solid var(--line);line-height:1.8;
-}
+.stories{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:11px}
+.story{background:var(--card2);border-radius:12px;padding:14px 16px}
+.story .tag{display:inline-block;font-size:9.5px;font-weight:750;letter-spacing:1.1px;
+text-transform:uppercase;padding:2px 8px;border-radius:5px;margin-bottom:8px}
+.tag-world{background:rgba(255,69,58,.16);color:var(--red)}
+.tag-finance{background:rgba(255,214,10,.14);color:var(--yellow)}
+.tag-amazon{background:rgba(10,132,255,.16);color:var(--blue)}
+.tag-tech{background:rgba(100,210,255,.14);color:var(--cyan)}
+.tag-gadget{background:rgba(172,142,255,.16);color:var(--lilac)}
+.tag-apple{background:rgba(200,200,210,.13);color:var(--silver)}
+.tag-parrot{background:rgba(48,209,88,.14);color:var(--green)}
+.tag-health{background:rgba(255,55,95,.15);color:var(--pink)}
+.story .hd{font-weight:640;font-size:14.5px;line-height:1.35;margin-bottom:6px}
+.story .ds{color:var(--t2);font-size:13px;line-height:1.45}
+.story a{color:var(--t3);font-size:11.5px;text-decoration:none;margin-top:8px;display:inline-block}
+.story a:hover{color:var(--blue)}
+
+.note{background:rgba(191,90,242,.08);border:1px solid rgba(191,90,242,.28);
+border-radius:14px;padding:16px 20px;margin-bottom:20px;font-size:13.5px;color:var(--t2);line-height:1.6}
+.note b.hd{color:var(--purple);display:block;font-size:11.5px;letter-spacing:1.3px;
+text-transform:uppercase;margin-bottom:7px}
+.note b{color:var(--t1)}
+
+footer{text-align:center;color:var(--t3);font-size:12.5px;margin-top:36px;line-height:1.9}
+footer b{color:var(--t2)}
 @media(max-width:640px){
-  body{padding:22px 14px 60px}
-  .greet{font-size:32px}
-  .card{padding:19px 16px}
-  .now-temp{font-size:54px}
-  .d-desc{display:none}
+.greet{font-size:32px}
+.wrow{grid-template-columns:70px 28px 88px 46px;gap:8px}
+.wrow .ds{display:none}
+.now-temp{font-size:52px}
 }
 </style>
 </head>
@@ -163,413 +157,377 @@ footer{
 <div class="wrap">
 
 <header>
-  <div class="greet"><span id="greeting">Good morning</span>, <span class="accent">Carl</span>.</div>
-  <div class="subgreet">Tuesday, August 25, 2026 &middot; Loxahatchee, FL &middot; Calendar is clear today</div>
+  <div class="greet" id="greet">Good morning, Carl</div>
+  <div class="subgreet">Wednesday, August 26, 2026 &middot; <b>Loxahatchee, FL</b> &middot; 83&deg;F, hazy and humid &mdash; storms build after 11 AM</div>
 </header>
 
 <div class="alert">
-  <div class="alert-title">&#9888;&#65038; Heads up today</div>
+  <div class="alert-title">Needs attention today</div>
   <ul>
-    <li><b>Heat advisory conditions</b> &mdash; high near 95&deg;F with heat index up to <b>102&deg;F</b>. Outdoor work is best before 11 AM.</li>
-    <li><b>Thunderstorms 2 PM&ndash;10 PM</b>, peaking near 38% around 6 PM. Then a genuinely wet stretch: 76&ndash;90% rain chances every day Wednesday through Monday.</li>
-    <li><b>Amazon peak inventory</b> &mdash; you replied "Yes, I will replenish" on CASE 21727663271 yesterday but nothing is inbound yet. Peak fulfillment surcharges begin Oct 15.</li>
-    <li><b>Synology NAS (K2PlexNas)</b> flagged security risks on its scheduled scan &mdash; still unaddressed since Aug 24.</li>
+    <li><b>Heat index to 105&deg;F</b> with 60% storm chance after ~11 AM. <span>Outdoor work and aviary time are best before 10 AM.</span></li>
+    <li><b>$904.32 Amazon reimbursement claim</b> &mdash; TrueOps flagged 36 missing units on a K2xLabs inbound shipment. <span>Reimbursement windows close and don't reopen.</span></li>
+    <li><b>Customer complaint with photos</b> &mdash; buyer says Amazon shipped the wrong Busters Hemp Oil strength. <span>Photo-documented product complaints escalate into A-to-z claims.</span></li>
+    <li><b>Email forwarding is bouncing</b> &mdash; two delivery failures in 48 hrs on gglobalmarketing.com forwards (550 5.7.26, sender auth). <span>You are silently losing inbound mail right now.</span></li>
+    <li><b>Google OAuth clients queued for auto-deletion</b> &mdash; inactive clients across your projects. <span>Deletion breaks any integration still using those credentials.</span></li>
   </ul>
 </div>
 
+<div class="note">
+  <b class="hd">Data correction</b>
+  This briefing's weather source was pointed at NWS gridpoint <b>MFL/63,83</b>, which resolves to <b>Fort Myers / Naples</b> &mdash; the wrong side of the state, and the likely reason recent forecasts read several degrees cool. It was re-pointed to <b>MFL/101,92 (Loxahatchee Groves)</b> for this run. The saved skill still holds the old coordinates, so this fix will not persist until the skill file is updated.
+</div>
+
 <div class="card">
-  <h2>Weather <span class="n">&mdash; Loxahatchee, FL 33470</span></h2>
+  <h2><span class="dot" style="background:var(--cyan)"></span>Weather</h2>
 
   <div class="now-row">
     <div>
-      <div class="now-temp">80&deg;</div>
+      <div class="now-temp warm">83&deg;</div>
       <div class="now-cond">Fair</div>
-      <div class="now-loc">KDJT &middot; updated 4:53 AM EDT</div>
+      <div class="now-loc">KDJT &middot; updated 5:53 AM EDT</div>
     </div>
-    <div class="now-stats">
-      <div class="stat"><div class="lbl">Feels like</div><div class="val">85&deg;F</div></div>
-      <div class="stat"><div class="lbl">Humidity</div><div class="val">85%</div></div>
-      <div class="stat"><div class="lbl">Wind</div><div class="val">Calm</div></div>
-      <div class="stat"><div class="lbl">Dewpoint</div><div class="val">75&deg;F</div></div>
-      <div class="stat"><div class="lbl">Barometer</div><div class="val">30.02 in</div></div>
-      <div class="stat"><div class="lbl">Visibility</div><div class="val">10 mi</div></div>
+    <div class="now-metrics">
+      <div class="metric"><div class="k">Feels like</div><div class="v hot">90&deg;F</div></div>
+      <div class="metric"><div class="k">Humidity</div><div class="v">74%</div></div>
+      <div class="metric"><div class="k">Dewpoint</div><div class="v">74&deg;F</div></div>
+      <div class="metric"><div class="k">Wind</div><div class="v">SE 5 mph</div></div>
+      <div class="metric"><div class="k">Barometer</div><div class="v">30.01 in</div></div>
+      <div class="metric"><div class="k">Visibility</div><div class="v">10.0 mi</div></div>
     </div>
   </div>
 
-  <div class="sub">Hourly &mdash; today</div>
+  <div class="sub">Today &middot; hourly</div>
   <div class="hourly" id="hourly">
-    <div class="hr" data-h="6"><div class="t">6 AM</div><div class="e">&#9728;&#65039;</div><div class="tp mild">73&deg;</div><div class="rn r-lo">0%</div><div class="wd">calm</div></div>
-    <div class="hr" data-h="7"><div class="t">7 AM</div><div class="e">&#127780;&#65039;</div><div class="tp mild">72&deg;</div><div class="rn r-lo">0%</div><div class="wd">calm</div></div>
-    <div class="hr" data-h="8"><div class="t">8 AM</div><div class="e">&#9728;&#65039;</div><div class="tp mild">74&deg;</div><div class="rn r-lo">0%</div><div class="wd">SE 1</div></div>
-    <div class="hr" data-h="9"><div class="t">9 AM</div><div class="e">&#9728;&#65039;</div><div class="tp mild">79&deg;</div><div class="rn r-lo">0%</div><div class="wd">calm</div></div>
-    <div class="hr" data-h="10"><div class="t">10 AM</div><div class="e">&#9728;&#65039;</div><div class="tp warm">86&deg;</div><div class="rn r-lo">1%</div><div class="wd">SE 1</div></div>
-    <div class="hr" data-h="11"><div class="t">11 AM</div><div class="e">&#9728;&#65039;</div><div class="tp warm">89&deg;</div><div class="rn r-lo">2%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="12"><div class="t">12 PM</div><div class="e">&#9728;&#65039;</div><div class="tp hot">90&deg;</div><div class="rn r-lo">6%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="13"><div class="t">1 PM</div><div class="e">&#9728;&#65039;</div><div class="tp hot">93&deg;</div><div class="rn r-lo">10%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="14"><div class="t">2 PM</div><div class="e">&#127782;&#65039;</div><div class="tp hot">94&deg;</div><div class="rn r-md">15%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="15"><div class="t">3 PM</div><div class="e">&#127782;&#65039;</div><div class="tp hot">93&deg;</div><div class="rn r-md">22%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="16"><div class="t">4 PM</div><div class="e">&#9928;&#65039;</div><div class="tp hot">94&deg;</div><div class="rn r-md">28%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="17"><div class="t">5 PM</div><div class="e">&#9928;&#65039;</div><div class="tp hot">91&deg;</div><div class="rn r-md">35%</div><div class="wd">SE 2</div></div>
-    <div class="hr" data-h="18"><div class="t">6 PM</div><div class="e">&#9928;&#65039;</div><div class="tp warm">88&deg;</div><div class="rn r-md">38%</div><div class="wd">S 2</div></div>
-    <div class="hr" data-h="19"><div class="t">7 PM</div><div class="e">&#9928;&#65039;</div><div class="tp warm">86&deg;</div><div class="rn r-md">33%</div><div class="wd">S 2</div></div>
-    <div class="hr" data-h="20"><div class="t">8 PM</div><div class="e">&#9928;&#65039;</div><div class="tp mild">80&deg;</div><div class="rn r-md">26%</div><div class="wd">S 2</div></div>
-    <div class="hr" data-h="21"><div class="t">9 PM</div><div class="e">&#127782;&#65039;</div><div class="tp mild">77&deg;</div><div class="rn r-md">21%</div><div class="wd">SE 1</div></div>
-    <div class="hr" data-h="22"><div class="t">10 PM</div><div class="e">&#9729;&#65039;</div><div class="tp mild">76&deg;</div><div class="rn r-lo">10%</div><div class="wd">SE 1</div></div>
-    <div class="hr" data-h="23"><div class="t">11 PM</div><div class="e">&#9925;</div><div class="tp mild">76&deg;</div><div class="rn r-lo">9%</div><div class="wd">SE 1</div></div>
+    <div class="hr" data-h="7"><div class="h">7 AM</div><div class="e">&#9728;&#65039;</div><div class="tp mild">76&deg;</div><div class="rn r-low">13%</div><div class="wd">E 2</div></div>
+    <div class="hr" data-h="8"><div class="h">8 AM</div><div class="e">&#127780;</div><div class="tp mild">78&deg;</div><div class="rn r-low">18%</div><div class="wd">E 2</div></div>
+    <div class="hr" data-h="9"><div class="h">9 AM</div><div class="e">&#127780;</div><div class="tp warm">82&deg;</div><div class="rn r-med">24%</div><div class="wd">SE 2</div></div>
+    <div class="hr" data-h="10"><div class="h">10 AM</div><div class="e">&#9925;</div><div class="tp warm">86&deg;</div><div class="rn r-med">26%</div><div class="wd">SE 3</div></div>
+    <div class="hr" data-h="11"><div class="h">11 AM</div><div class="e">&#9925;</div><div class="tp warm">88&deg;</div><div class="rn r-med">27%</div><div class="wd">SE 5</div></div>
+    <div class="hr" data-h="12"><div class="h">12 PM</div><div class="e">&#9925;</div><div class="tp warm">89&deg;</div><div class="rn r-med">32%</div><div class="wd">SE 6</div></div>
+    <div class="hr" data-h="13"><div class="h">1 PM</div><div class="e">&#127782;</div><div class="tp hot">90&deg;</div><div class="rn r-med">40%</div><div class="wd">SE 6</div></div>
+    <div class="hr" data-h="14"><div class="h">2 PM</div><div class="e">&#9928;</div><div class="tp hot">91&deg;</div><div class="rn r-high">57%</div><div class="wd">SE 7</div></div>
+    <div class="hr" data-h="15"><div class="h">3 PM</div><div class="e">&#9928;</div><div class="tp hot">90&deg;</div><div class="rn r-high">61%</div><div class="wd">SE 7</div></div>
+    <div class="hr" data-h="16"><div class="h">4 PM</div><div class="e">&#9928;</div><div class="tp hot">91&deg;</div><div class="rn r-high">57%</div><div class="wd">SE 7</div></div>
+    <div class="hr" data-h="17"><div class="h">5 PM</div><div class="e">&#9928;</div><div class="tp warm">85&deg;</div><div class="rn r-high">61%</div><div class="wd">SE 8</div></div>
+    <div class="hr" data-h="18"><div class="h">6 PM</div><div class="e">&#9928;</div><div class="tp warm">84&deg;</div><div class="rn r-high">57%</div><div class="wd">SE 7</div></div>
+    <div class="hr" data-h="19"><div class="h">7 PM</div><div class="e">&#127782;</div><div class="tp warm">83&deg;</div><div class="rn r-med">43%</div><div class="wd">SE 6</div></div>
+    <div class="hr" data-h="20"><div class="h">8 PM</div><div class="e">&#127782;</div><div class="tp warm">80&deg;</div><div class="rn r-med">28%</div><div class="wd">SE 6</div></div>
+    <div class="hr" data-h="21"><div class="h">9 PM</div><div class="e">&#127781;</div><div class="tp warm">80&deg;</div><div class="rn r-med">22%</div><div class="wd">SE 5</div></div>
+    <div class="hr" data-h="22"><div class="h">10 PM</div><div class="e">&#127781;</div><div class="tp mild">79&deg;</div><div class="rn r-low">18%</div><div class="wd">E 3</div></div>
+    <div class="hr" data-h="23"><div class="h">11 PM</div><div class="e">&#127769;</div><div class="tp mild">79&deg;</div><div class="rn r-low">14%</div><div class="wd">E 3</div></div>
   </div>
 
-  <div class="sub" style="margin-top:14px">7-day outlook</div>
-  <table class="wk">
-    <tr class="today">
-      <td class="d-day">Today</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">95&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Sunny, then t-storms after 2 PM &middot; heat index to 102&deg;</td>
-      <td class="d-rain r-md">35%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Wednesday</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">94&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Storms after 1 PM and into the night &middot; heat index to 102&deg;</td>
-      <td class="d-rain r-vhi">76%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Thursday</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">93&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Showers and thunderstorms most of the day</td>
-      <td class="d-rain r-vhi">79%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Friday</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">94&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Mostly sunny, then storms after 2 PM</td>
-      <td class="d-rain r-vhi">79%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Saturday</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">93&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Storms from 8 AM onward &middot; E wind 1&ndash;5 mph</td>
-      <td class="d-rain r-vhi">80%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Sunday</td><td class="d-emo">&#127783;&#65039;</td>
-      <td class="d-tmp"><span class="hot">94&deg;</span> <span class="lo">73&deg;</span></td>
-      <td class="d-desc">Wettest day of the stretch &middot; storms from 8 AM</td>
-      <td class="d-rain r-vhi">87%</td>
-    </tr>
-    <tr>
-      <td class="d-day">Monday</td><td class="d-emo">&#9928;&#65039;</td>
-      <td class="d-tmp"><span class="hot">93&deg;</span> <span class="lo">72&deg;</span></td>
-      <td class="d-desc">Storms after 8 AM &middot; E wind around 6 mph</td>
-      <td class="d-rain r-vhi">85%</td>
-    </tr>
-  </table>
-</div>
-
-<div class="card">
-  <h2>Top 3 priorities <span class="n">&mdash; from email + calendar</span></h2>
-  <div class="prio">
-    <div class="pnum">1</div>
-    <div>
-      <div class="ptitle">Ship the Amazon peak-season replenishment</div>
-      <div class="pdesc">You committed to Amazon RBS yesterday ("Yes, I will replenish") on CASE 21727663271. Peak fulfillment surcharges &mdash; roughly $0.32/unit plus the 3.5% fuel and logistics surcharge &mdash; start Oct 15. Inbound lead time means the quantity decision is really a this-week decision, not an October one.</div>
-    </div>
-  </div>
-  <div class="prio">
-    <div class="pnum">2</div>
-    <div>
-      <div class="ptitle">Follow up on five Kalyn's Kreations leads from yesterday</div>
-      <div class="pdesc">WhatConverts logged five inbound calls on Aug 24 between 9:07 AM and 1:59 PM &mdash; three from Google CPC on the keyword "civil litigation attorney," landing on hortonlawgroup.com. That's a paid-click cluster inside one afternoon. Worth confirming whether those calls converted or whether spend is buying unanswered rings.</div>
-    </div>
-  </div>
-  <div class="prio">
-    <div class="pnum">3</div>
-    <div>
-      <div class="ptitle">Clear the Synology security advisory</div>
-      <div class="pdesc">K2PlexNas reported "several security risks" on its scheduled scan Aug 24 and the notice is still unread. A NAS holding Plex plus business files is exactly where a ten-minute fix beats a bad week.</div>
-    </div>
+  <div class="week">
+    <div class="sub">7-day outlook</div>
+    <div class="wrow today"><div class="d">Today</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 76&deg;</span></div>
+      <div class="ds">Mostly sunny, storms likely after 11 AM &middot; heat index 105&deg;</div>
+      <div class="pp r-high">61%</div></div>
+    <div class="wrow"><div class="d">Thursday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 76&deg;</span></div>
+      <div class="ds">Storms likely before 5 PM &middot; heat index 106&deg; &middot; SE 1&ndash;7 mph</div>
+      <div class="pp r-high">55%</div></div>
+    <div class="wrow"><div class="d">Friday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 77&deg;</span></div>
+      <div class="ds">Showers from late morning, storms likely into the evening</div>
+      <div class="pp r-high">62%</div></div>
+    <div class="wrow"><div class="d">Saturday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 77&deg;</span></div>
+      <div class="ds">Storms likely after 8 AM &mdash; earliest onset of the week</div>
+      <div class="pp r-vhigh">74%</div></div>
+    <div class="wrow"><div class="d">Sunday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 77&deg;</span></div>
+      <div class="ds">Storms through the day, heaviest after 2 PM</div>
+      <div class="pp r-vhigh">75%</div></div>
+    <div class="wrow"><div class="d">Monday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">93&deg;</span> <span class="lo">/ 77&deg;</span></div>
+      <div class="ds">Showers and thunderstorms after 8 AM &middot; E 3&ndash;9 mph</div>
+      <div class="pp r-vhigh">76%</div></div>
+    <div class="wrow"><div class="d">Tuesday</div><div class="ic">&#9928;</div>
+      <div class="hl"><span class="hot">92&deg;</span> <span class="lo">/ 77&deg;</span></div>
+      <div class="ds">Storms likely from mid-morning onward</div>
+      <div class="pp r-vhigh">72%</div></div>
   </div>
 </div>
 
 <div class="card">
-  <h2>Calendar <span class="n">&mdash; Tuesday, August 25</span></h2>
-  <div class="empty">
-    <span class="big">&#128197;</span>
-    No events scheduled today.<br>
-    <span style="font-size:13px;color:var(--t3)">A fully open day &mdash; the rarest asset on this dashboard. The cool hours before 11 AM are the natural block for the Amazon inventory decision.</span>
-  </div>
+  <h2><span class="dot" style="background:var(--green)"></span>Top 3 for today</h2>
+  <div class="pri"><div class="n">1</div><div class="b">
+    <div class="t">File the $904.32 Amazon reimbursement claim</div>
+    <div class="x">TrueOps flagged 36 missing units across one K2xLabs inbound shipment.</div>
+    <div class="why">Highest dollar value in the inbox and the only item with a hard expiry &mdash; reimbursement windows close and don't reopen.</div>
+  </div></div>
+  <div class="pri"><div class="n">2</div><div class="b">
+    <div class="t">Answer the Busters Hemp Oil complaint</div>
+    <div class="x">Buyer sent side-by-side photos claiming the 60,000 bottle was substituted. Sent to buster@k2xlabs.com.</div>
+    <div class="why">A photo-documented "wrong product" claim is the kind that becomes an A-to-z case or a listing suspension if it sits unanswered.</div>
+  </div></div>
+  <div class="pri"><div class="n">3</div><div class="b">
+    <div class="t">Fix the gglobalmarketing.com forwarding failures</div>
+    <div class="x">Two mailer-daemon bounces in 48 hours &mdash; Gmail rejecting forwarded mail for unauthenticated sender (550 5.7.26).</div>
+    <div class="why">The one problem whose size you can't see. Every bounce is mail you never knew arrived, and it keeps failing until SPF/DKIM is corrected.</div>
+  </div></div>
 </div>
 
 <div class="card">
-  <h2>Email <span class="n">&mdash; last 24 hours, triaged</span></h2>
+  <h2><span class="dot" style="background:var(--purple)"></span>Calendar &middot; Wednesday</h2>
+  <div class="empty">No events scheduled today &mdash; a clear day to work the three items above.</div>
+</div>
 
-  <div class="tier">
-    <div class="tier-h t-act"><span class="dot"></span>Action required</div>
+<div class="card">
+  <h2><span class="dot" style="background:var(--orange)"></span>Inbox triage &middot; last 24 hours</h2>
 
+  <div class="tier act">
+    <div class="tier-h">Action required <span class="cnt">4</span></div>
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">RE: [CASE 21727663271] Shipping inventory for Peak</div>
-        <div class="mail-from">rbs-valid-list-price@amazon.com</div>
-      </div>
-      <div class="mail-snip">Amazon RBS asks the Busters / K2xLabs team to confirm inventory coverage and Prime eligibility ahead of peak events. You replied "Yes, I will replenish."</div>
-      <div class="mail-act"><b>Suggested:</b> Turn the reply into an actual shipment plan &mdash; pull ASIN-level sell-through, set peak quantities, create the inbound before the Oct 15 surcharge window.</div>
-      <div class="toggle" onclick="tg(this)">Show draft reply &#9662;</div>
-      <div class="reply">Hi team,
-
-Confirming the replenishment plan for peak. I'm pulling ASIN-level velocity now and
-will have inbound shipments created before the Oct 15 peak fee window opens.
-
-Can you confirm the current recommended coverage days for our top ASINs, so the
-quantities line up with your forecast rather than mine?
-
-Thanks,
-Carl</div>
+      <div class="from">hello@trueops.com &rarr; karl@gglobalmarketing.com</div>
+      <div class="subj">$904.32 in lost inbound needs your attention</div>
+      <div class="snip">K2xLabs has 1 shipment with 36 missing units and an estimated claim potential of $904.32.</div>
+      <div class="do">Pull the shipment ID and file before the reimbursement window closes.</div>
     </div>
-
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">Security risks detected on K2PlexNas</div>
-        <div class="mail-from">sns@synologynotification.com</div>
-      </div>
-      <div class="mail-snip">Security Advisor completed a scheduled scan and found several risks requiring attention. Sign in to DSM to view the report.</div>
-      <div class="mail-act"><b>Suggested:</b> Sign into DSM, read the advisory, and at minimum confirm no admin account is exposed and DSM is on the current patch.</div>
+      <div class="from">jbskarin@gmail.com &rarr; buster@k2xlabs.com</div>
+      <div class="subj">Busters Hemp Oil 60,000</div>
+      <div class="snip">Repeat customer attached two photos &mdash; the bottle received doesn't match the 60,000 labeling they normally get.</div>
+      <div class="do">Reply today. Verify the ASIN and lot, offer replacement or refund before they open a claim.</div>
     </div>
-
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">5&times; New Phone Call Received | WhatConverts</div>
-        <div class="mail-from">noreply@whatconverts.com</div>
-      </div>
-      <div class="mail-snip">Kalyn's Kreations Inc &mdash; five inbound calls Aug 24, 9:07 AM to 1:59 PM. Three from Google CPC, keyword "civil litigation attorney," landing on hortonlawgroup.com.</div>
-      <div class="mail-act"><b>Suggested:</b> Check call outcomes in WhatConverts. Any unanswered call is paid spend leaking &mdash; worth a same-day callback.</div>
+      <div class="from">googledevelopers-noreply@google.com</div>
+      <div class="subj">[Action Advised] Manage your unused OAuth clients</div>
+      <div class="snip">Inactive OAuth clients in projects you manage are subject to automatic deletion under OAuth 2.0 policy.</div>
+      <div class="do">Check which projects are named &mdash; confirm none back a live integration before deletion.</div>
+    </div>
+    <div class="mail">
+      <div class="from">mailer-daemon@googlemail.com (&times;2)</div>
+      <div class="subj">Delivery Status Notification (Failure)</div>
+      <div class="snip">550 5.7.26 &mdash; mail forwarded via karl+caf_@gglobalmarketing.com rejected for failing sender authentication.</div>
+      <div class="do">Fix SPF/DKIM on the forwarder, or switch to a Gmail "Check mail from other accounts" fetch.</div>
     </div>
   </div>
 
-  <div class="tier">
-    <div class="tier-h t-rev"><span class="dot"></span>Needs review</div>
-
+  <div class="tier rev">
+    <div class="tier-h">Needs review <span class="cnt">4</span></div>
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">Final distribution of mom's estate</div>
-        <div class="mail-from">laurieslater86@gmail.com</div>
-      </div>
-      <div class="mail-snip">$5,500 remaining in the Chase checking account, split three ways at $1,833 each. You confirmed a check to 11225 68th St N; Laurie replied "Will do."</div>
-      <div class="mail-act"><b>Status:</b> Closed loop &mdash; nothing to send. Watch the mail and confirm receipt so Laurie can close the account.</div>
+      <div class="from">no.reply.alerts@chase.com</div>
+      <div class="subj">Credit card statement available (&hellip;4865)</div>
+      <div class="snip">Statement balance $8,344.22 &middot; minimum $262.00 due 09/19/2026 &middot; autopay enabled.</div>
+      <div class="do">Autopay likely covers the minimum only &mdash; decide how much above that to pay.</div>
     </div>
-
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">Action Required: Changes to Google Organic SERP and Labs APIs</div>
-        <div class="mail-from">team@dataforseo.com</div>
-      </div>
-      <div class="mail-snip">Deprecation of legacy boolean fields in favor of the checks array, effective Jan 20, 2027.</div>
-      <div class="mail-act"><b>Suggested:</b> Long runway, but note now which of your scripts read those boolean fields, while the change is fresh.</div>
+      <div class="from">support@hosting.com</div>
+      <div class="subj">New invoice A-INV-1293541 &mdash; $51.75</div>
+      <div class="snip">Due early September, billed to karl@gglobalmarketing.com.</div>
+      <div class="do">Low urgency; confirm it's a service you still use.</div>
     </div>
-
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">SiteGround ticket #5119160 &mdash; AI Crawlers Setup</div>
-        <div class="mail-from">noreply@siteground.com</div>
-      </div>
-      <div class="mail-snip">Two replies posted on your yourdoodledog.com ticket about AI crawler configuration; the second is still unread.</div>
-      <div class="mail-act"><b>Suggested:</b> Read the latest reply &mdash; AI-crawler rules determine whether your content surfaces in AI search results.</div>
+      <div class="from">no-reply@substack.com</div>
+      <div class="subj">Paid subscriber cancelled &mdash; The Flowing Zone</div>
+      <div class="snip">gwang3@gmail.com, prior status Paid Subscriber, cancelled at their own request.</div>
+      <div class="do">One churn isn't signal &mdash; but log it and watch whether it becomes a pattern.</div>
     </div>
-
     <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">Changing your Amazon business structure? VAT needs a transition plan</div>
-        <div class="mail-from">media@hellotax.com</div>
-      </div>
-      <div class="mail-snip">Vendor content on VAT registrations not transferring automatically when a seller entity changes.</div>
-      <div class="mail-act"><b>Suggested:</b> Marketing, not a notice &mdash; but relevant if any entity restructuring is on the table this year.</div>
-    </div>
-
-    <div class="mail">
-      <div class="mail-top">
-        <div class="mail-sub">You requested a replacement card</div>
-        <div class="mail-from">alerts@notify.wellsfargo.com</div>
-      </div>
-      <div class="mail-snip">Replacement Visa Signature card requested online by Kalyn Bastion, card ending 9051, reason: damaged.</div>
-      <div class="mail-act"><b>Suggested:</b> Expected if Kalyn requested it. If not, treat as urgent and call the number on the back of the card &mdash; not any number in the email.</div>
+      <div class="from">hello@sophiesociety.com</div>
+      <div class="subj">New bonus for the AI Amazon PPC Challenge</div>
+      <div class="snip">They're exposing an MCP so Claude skills can pull live Amazon PPC data.</div>
+      <div class="do">Directly relevant to your Cowork setup &mdash; worth 10 minutes to see what the MCP exposes.</div>
     </div>
   </div>
 
-  <div class="tier">
-    <div class="tier-h t-fyi"><span class="dot"></span>FYI</div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Your DoNotAge.org order has shipped</div><div class="mail-from">hello@donotage.org</div></div>
-      <div class="mail-snip">Supplement order dispatched &mdash; tracking available in your account.</div>
-    </div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Shipped: "EUHOMY 14,000 BTU Portable&hellip;"</div><div class="mail-from">shipment-tracking@amazon.com</div></div>
-      <div class="mail-snip">Portable AC unit on the way to info@enhanceme.biz.</div>
-    </div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Updates to Microsoft Services Agreement</div><div class="mail-from">msa@communication.microsoft.com</div></div>
-      <div class="mail-snip">Routine terms-of-use update notice.</div>
-    </div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Verizon: trade-in QR code + next bill estimate</div><div class="mail-from">VZWMail@ecrmemail.verizonwireless.com</div></div>
-      <div class="mail-snip">Kalyn's trade-in QR code is ready and the next bill estimate reflects recent account changes. Trade-in windows do expire.</div>
-    </div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Chapter 456 Weekly Newsletter</div><div class="mail-from">noreply@ridecaptainsandtailgunners.com</div></div>
-      <div class="mail-snip">SCRC weekly newsletter PDF attached (delivered twice).</div>
-    </div>
-    <div class="mail">
-      <div class="mail-top"><div class="mail-sub">Newsletters &amp; promotions</div><div class="mail-from">Natural Success &middot; Ascend the Frequencies &middot; Quora &middot; Weee! &middot; EyeBuyDirect &middot; Patreon</div></div>
-      <div class="mail-snip">Nine promotional and newsletter messages. Two "Ascend the Frequencies" emails lean on deadline pressure ("Tomorrow Morning It Will Be Too Late") &mdash; worth reading as a sales tactic rather than a real deadline.</div>
+  <div class="tier fyi">
+    <div class="tier-h">FYI <span class="cnt">10</span></div>
+    <div class="fyi-list">
+      <div class="mail"><div class="subj">FBA destroy request complete (260808X14)</div><div class="snip">7 of 7 units destroyed, none cancelled.</div></div>
+      <div class="mail"><div class="subj">Amazon &mdash; HONEY CARE All-Absorb shipped</div><div class="snip">Ordered yesterday, already in transit.</div></div>
+      <div class="mail"><div class="subj">Privacy.com &mdash; $18.01 processed</div><div class="snip">YouTube Premium renewal.</div></div>
+      <div class="mail"><div class="subj">Cloudflare Connect 2026 agenda live</div><div class="snip">San Francisco, Oct 19&ndash;21. Two copies received.</div></div>
+      <div class="mail"><div class="subj">Zapier &mdash; ZapConnect 2026 guide</div><div class="snip">Event promo.</div></div>
+      <div class="mail"><div class="subj">vidIQ &mdash; 4 rules behind every breakout video</div><div class="snip">Possibly useful for Parrot Bliss scripting.</div></div>
+      <div class="mail"><div class="subj">Dave Asprey &mdash; Future of Biohacking</div><div class="snip">Free online event announcement.</div></div>
+      <div class="mail"><div class="subj">Zernio &mdash; WhatsApp, X Articles, LinkedIn polls</div><div class="snip">Product changelog.</div></div>
+      <div class="mail"><div class="subj">Jack Roberts &mdash; 4,000 members</div><div class="snip">Annual upgrade promo.</div></div>
+      <div class="mail"><div class="subj">Promos &mdash; Weee!, EyeBuyDirect, Prosper, Upgrade, Synchrony</div><div class="snip">Offers and pre-approvals. No action.</div></div>
     </div>
   </div>
 </div>
 
 <div class="card">
-  <h2>News <span class="n">&mdash; 24 stories across 8 categories</span></h2>
+  <h2><span class="dot" style="background:var(--red)"></span>News &middot; 24 stories</h2>
 
   <div class="cat">
     <div class="cat-h cat-world">World &amp; Politics</div>
-    <div class="story"><span class="tag world">World</span><a class="hl" href="https://www.conference-board.org/research/policy-backgrounders/A-Geopolitical-August" target="_blank" rel="noopener">Strait of Hormuz disruption keeps the Middle East on edge</a>
-      <p>Iranian interdiction of vessels transiting the strait continues to constrain global oil flows after this year's escalation cycle &mdash; the single largest input into energy prices right now.</p>
-      <div class="src">The Conference Board</div></div>
-    <div class="story"><span class="tag world">World</span><a class="hl" href="https://www.npr.org/sections/elections/" target="_blank" rel="noopener">Midterm primaries: Flanagan takes the Minnesota Senate nod</a>
-      <p>Gov. Peggy Flanagan won the Democratic Senate primary in Minnesota, extending a run of progressive wins over centrist candidates heading into November.</p>
-      <div class="src">NPR Elections</div></div>
-    <div class="story"><span class="tag world">World</span><a class="hl" href="https://www.npr.org/sections/politics/" target="_blank" rel="noopener">Twelve GOP-led states appeal a mail-in voting ruling</a>
-      <p>The states are challenging a court order that blocks USPS from implementing part of an executive order restricting mail-in voting before the midterms.</p>
-      <div class="src">NPR Politics</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-world">world</span>
+        <div class="hd">US imposes 50% tariffs on ~$20B of Canadian goods after talks collapse</div>
+        <div class="ds">Duties hit hockey sticks, building materials, liquor and some apparel. Canada will match dollar-for-dollar from Sept 8, concentrated in steel, dairy, appliances and electronics.</div>
+        <a href="https://www.aljazeera.com/news/2026/8/22/us-imposes-50-tariffs-on-20bn-worth-of-canadian-goods-after-talks-fail" target="_blank" rel="noopener">Al Jazeera</a></div>
+      <div class="story"><span class="tag tag-world">world</span>
+        <div class="hd">Tariff escalation carries midterm risk for Republicans</div>
+        <div class="ds">The breakdown lands in an election cycle already dominated by price concerns. Carney blamed "uneconomic" and "unfair" US demands.</div>
+        <a href="https://www.washingtonpost.com/politics/2026/08/25/trump-tariffs-canada-risks-political-fallout-republicans/" target="_blank" rel="noopener">Washington Post</a></div>
+      <div class="story"><span class="tag tag-world">world</span>
+        <div class="hd">Washington pivots from strikes to sanctions on Iran</div>
+        <div class="ds">Treasury Secretary Bessent is detailing new economic pressure as diplomatic channels reopen. Markets read the shift as de-escalation.</div>
+        <a href="https://www.npr.org/sections/world/" target="_blank" rel="noopener">NPR World</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-finance">Finance &amp; Markets</div>
-    <div class="story"><span class="tag finance">Finance</span><a class="hl" href="https://www.cnbc.com/oil/" target="_blank" rel="noopener">Brent near $93 as sanctions threats drive a second weekly gain</a>
-      <p>Brent traded around $93.61 and WTI near $87.56 after Washington signaled "crushing" economic sanctions on Iran. Energy is now the dominant market narrative.</p>
-      <div class="src">CNBC Oil</div></div>
-    <div class="story"><span class="tag finance">Finance</span><a class="hl" href="https://www.thestreet.com/stock-market-today/stock-market-today-dow-jones-sp-500-nasdaq-updates-aug-18-2026" target="_blank" rel="noopener">30-year Treasury yield hits its highest level in nearly two decades</a>
-      <p>Nasdaq and S&amp;P 500 slipped as the long end of the curve pushed to multi-decade highs &mdash; a real headwind for growth valuations and anything financed with debt.</p>
-      <div class="src">TheStreet</div></div>
-    <div class="story"><span class="tag finance">Finance</span><a class="hl" href="https://www.cnbc.com/2026/08/20/stock-market-today-live-updates.html" target="_blank" rel="noopener">US refiners surge to record highs on a crack-spread blowout</a>
-      <p>Constrained refining capacity in Russia and the Middle East widened crude-to-diesel margins, sending refiner equities to all-time highs while broad indices drift.</p>
-      <div class="src">CNBC</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-finance">finance</span>
+        <div class="hd">Stocks pause ahead of Nvidia earnings</div>
+        <div class="ds">S&amp;P 500 futures &minus;0.1%, Nasdaq 100 &minus;0.2%. Tuesday's close: S&amp;P 7,677.28 (+0.32%), Nasdaq 26,151.30 (+0.66%).</div>
+        <a href="https://www.cnbc.com/2026/08/24/stock-market-today-live-updates.html" target="_blank" rel="noopener">CNBC</a></div>
+      <div class="story"><span class="tag tag-finance">finance</span>
+        <div class="hd">Oil slides a third straight session, easing inflation pressure</div>
+        <div class="ds">Crude at $80.78/bbl, &minus;1.92% on the day; Brent fell 3.2% to $89.20 as Iran tensions cooled. Treasury yields followed it down.</div>
+        <a href="https://www.cnbc.com/2026/08/25/treasury-yields-steady-as-traders-await-more-economic-data-.html" target="_blank" rel="noopener">CNBC</a></div>
+      <div class="story"><span class="tag tag-finance">finance</span>
+        <div class="hd">July PCE lands today &mdash; core still near 3.3%</div>
+        <div class="ds">The Fed's preferred gauge publishes alongside the Q2 GDP revision. Sticky core inflation remains the main obstacle to dovish bets under Chair Warsh.</div>
+        <a href="https://www.bloomberg.com/news/articles/2026-08-25/treasuries-gain-as-oil-drop-eases-pressure-on-inflation-bessent" target="_blank" rel="noopener">Bloomberg</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-amazon">Amazon &amp; E-Commerce</div>
-    <div class="story"><span class="tag amazon">Amazon</span><a class="hl" href="https://www.autopilotbrand.com/resources/amazon-policy-tracker" target="_blank" rel="noopener">Peak fulfillment fees return Oct 15 &mdash; about $0.32/unit plus a 3.5% surcharge</a>
-      <p>The peak window runs Oct 15, 2026 through Jan 14, 2027, with the fuel and logistics surcharge stacking on top. Directly relevant to your replenishment math this week.</p>
-      <div class="src">Autopilot Brand &middot; Policy Tracker</div></div>
-    <div class="story"><span class="tag amazon">Amazon</span><a class="hl" href="https://www.pattern.com/blog/amazon-is-ending-fba-prep-services-in-2026" target="_blank" rel="noopener">FBA prep and labeling services fully retired</a>
-      <p>Amazon ended FBA prep and labeling in the US as of Jan 1 and in Canada as of Jul 1. Every unit must be prepped and labeled by the seller or a 3PL before inbound.</p>
-      <div class="src">Pattern</div></div>
-    <div class="story"><span class="tag amazon">Amazon</span><a class="hl" href="https://mrjeffamz.com/blog/amazon-seller-news-2026" target="_blank" rel="noopener">AI-generated people in listings now require disclosure metadata</a>
-      <p>Since Jul 27, product images and A+ Content featuring photorealistic AI-generated people must carry specific metadata &mdash; an easy compliance item to miss on refreshed creative.</p>
-      <div class="src">Mr. Jeff</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-amazon">amazon</span>
+        <div class="hd">New Business Solutions Agreement took effect Aug 24</div>
+        <div class="ds">The updated BSA bans transferring seller rights and pledging Amazon revenue as collateral &mdash; it reaches financing arrangements and exit plans.</div>
+        <a href="https://www.velocitysellers.com/2026/08/03/amazon-bsa-update-august-24-2026-transfer-pledge/" target="_blank" rel="noopener">Velocity Sellers</a></div>
+      <div class="story"><span class="tag tag-amazon">amazon</span>
+        <div class="hd">Peak fulfillment fees return Oct 15 &ndash; Jan 14</div>
+        <div class="ds">~$0.32/unit peak surcharge across FBA, MCF and Buy with Prime, stacking on the 3.5% fuel and logistics surcharge. Worth pricing into Q4 now.</div>
+        <a href="https://www.autopilotbrand.com/resources/amazon-policy-tracker" target="_blank" rel="noopener">Autopilot Brand</a></div>
+      <div class="story"><span class="tag tag-amazon">amazon</span>
+        <div class="hd">FBA prep and labeling services fully retired</div>
+        <div class="ds">Sellers must prep and label every unit in-house or via 3PL. The revamped New Selection Program offsets some cost &mdash; free storage threshold doubles to 200 units.</div>
+        <a href="https://www.pattern.com/blog/amazon-is-ending-fba-prep-services-in-2026" target="_blank" rel="noopener">Pattern</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-tech">AI &amp; Technology</div>
-    <div class="story"><span class="tag tech">Tech</span><a class="hl" href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">OpenAI's "Astra" family reportedly solved open math problems</a>
-      <p>Announced Aug 1: an internal Astra model is claimed to have solved ten previously open math problems, framed as a shift from task execution toward original research. Worth treating as a company claim until independently verified.</p>
-      <div class="src">Build Fast with AI</div></div>
-    <div class="story"><span class="tag tech">Tech</span><a class="hl" href="https://medium.com/@davidakpovi/ai-news-week-of-august-3-9-2026-8dfa677ffca3" target="_blank" rel="noopener">Eleven-plus model releases in twenty days</a>
-      <p>Gemini 3.7 Flash at half the price of 3.6 Flash, Meta's open-weight Muse Code, Seed 2.1 Turbo, and Claude Opus 5 updates all landed inside three weeks.</p>
-      <div class="src">AI News Weekly</div></div>
-    <div class="story"><span class="tag tech">Tech</span><a class="hl" href="https://www.artificialintelligence-news.com/" target="_blank" rel="noopener">INTERPOL: AI involved in 55% of reported African cybercrime</a>
-      <p>The African Cyberthreat Assessment 2026 puts AI-assisted tooling in the majority of reported incidents &mdash; a sharp marker of how fast attacker capability is compounding.</p>
-      <div class="src">AI News</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-tech">tech</span>
+        <div class="hd">OpenAI's Astra solves ten open math problems</div>
+        <div class="ds">Announced Aug 1 &mdash; results include proving the existence of non-sofic groups and establishing new sphere-packing bounds.</div>
+        <a href="https://www.buildfastwithai.com/blogs/ai-news-today-august-2-2026" target="_blank" rel="noopener">BuildFastWithAI</a></div>
+      <div class="story"><span class="tag tag-tech">tech</span>
+        <div class="hd">Eleven major model releases in twenty days</div>
+        <div class="ds">Gemini 3.7 Flash, Meta's open-weight Muse Code, Seed 2.1 Turbo and Claude Opus 5 updates all shipped inside three weeks.</div>
+        <a href="https://www.artificialintelligence-news.com/" target="_blank" rel="noopener">AI News</a></div>
+      <div class="story"><span class="tag tag-tech">tech</span>
+        <div class="hd">Anthropic commits ~$71B to compute; OpenAI eyes IPO</div>
+        <div class="ds">Anthropic's commitments include a $10B contract with Volta. OpenAI is preparing what could be the largest tech listing on record.</div>
+        <a href="https://aitoolsrecap.com/Blog/AINewsAugust2026.aspx" target="_blank" rel="noopener">AIToolsRecap</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-gadget">Tech &amp; Gadgets</div>
-    <div class="story"><span class="tag gadget">Gadget</span><a class="hl" href="https://www.techradar.com/tech/top-tech-of-the-month-the-best-new-gadgets-weve-tested-for-august-2026" target="_blank" rel="noopener">Samsung Galaxy Z Fold 8 headlines a tiered foldable lineup</a>
-      <p>Samsung is splitting the foldable range into tiers this month, a move that could finally push folding phones out of the halo-product bracket.</p>
-      <div class="src">TechRadar</div></div>
-    <div class="story"><span class="tag gadget">Gadget</span><a class="hl" href="https://www.yankodesign.com/2026/08/08/7-best-tech-gadgets-of-august-2026/" target="_blank" rel="noopener">Google ships its first standalone smart speaker in six years</a>
-      <p>The Google Home Speaker is the first since Nest Audio in 2020, and the pitch is almost entirely Gemini-built-in rather than audio hardware.</p>
-      <div class="src">Yanko Design</div></div>
-    <div class="story"><span class="tag gadget">Gadget</span><a class="hl" href="https://www.gearpatrol.com/audio/best-tech-audio-hi-fi-releases-2026-august-week-3/" target="_blank" rel="noopener">Sennheiser flagship earbuds and a dual-screen E Ink tablet</a>
-      <p>This week's notable releases include Sennheiser's flagship wireless earbuds, a Pro-Ject entry turntable, and a dual-screen E Ink tablet that treats reading and writing as a single workflow.</p>
-      <div class="src">Gear Patrol</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-gadget">gadget</span>
+        <div class="hd">Samsung unveils the Galaxy Z Fold 8</div>
+        <div class="ds">Arriving this month as part of a newly tiered foldable lineup rather than a single flagship.</div>
+        <a href="https://www.yankodesign.com/2026/08/08/7-best-tech-gadgets-of-august-2026/" target="_blank" rel="noopener">Yanko Design</a></div>
+      <div class="story"><span class="tag tag-gadget">gadget</span>
+        <div class="hd">Google ships its first smart speaker in six years</div>
+        <div class="ds">The Google Home Speaker is the first standalone since Nest Audio in 2020, positioned almost entirely around built-in Gemini.</div>
+        <a href="https://www.techradar.com/tech/the-best-tech-of-2026-so-far-the-21-finest-gadgets-weve-tested-this-year" target="_blank" rel="noopener">TechRadar</a></div>
+      <div class="story"><span class="tag tag-gadget">gadget</span>
+        <div class="hd">Samsung Freestyle+ projects 100 inches at 1080p</div>
+        <div class="ds">The 2026 refresh auto-detects wall and screen position. Also landing this month: a pocketable folding mouse and a dual-screen E Ink tablet.</div>
+        <a href="https://www.gearpatrol.com/audio/best-tech-audio-hi-fi-releases-2026-august-week-3/" target="_blank" rel="noopener">Gear Patrol</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-apple">Mac &amp; iOS Software</div>
-    <div class="story"><span class="tag apple">Apple</span><a class="hl" href="https://www.macrumors.com/2026/06/20/apple-unveiled-these-five-new-apps/" target="_blank" rel="noopener">Apple's five newly unveiled apps roll out across the ecosystem</a>
-      <p>The June announcement set is now reaching users, continuing Apple's pattern of folding standalone utilities into the OS rather than the App Store.</p>
-      <div class="src">MacRumors</div></div>
-    <div class="story"><span class="tag apple">Apple</span><a class="hl" href="https://rize.io/blog/best-mac-productivity-apps-2026" target="_blank" rel="noopener">Raycast 2.0 public beta remains the launcher release to watch</a>
-      <p>Raycast extension growth is up roughly 300% year over year, and 2.0 extends the keyboard-driven model to Windows alongside macOS.</p>
-      <div class="src">Rize</div></div>
-    <div class="story"><span class="tag apple">Apple</span><a class="hl" href="https://setapp.com/app-reviews/best-mac-apps" target="_blank" rel="noopener">Mac productivity apps converge on "capacity-aware" workflows</a>
-      <p>The 2026 stacks &mdash; Rize, Things 3, Fantastical, Raycast &mdash; increasingly blend planning, focus control, and AI assist rather than staying pure task lists.</p>
-      <div class="src">Setapp</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-apple">apple</span>
+        <div class="hd">macOS 26.7 code leaks more than ten unreleased products</div>
+        <div class="ds">References to AirPods with IR cameras for Visual Intelligence, a foldable iPhone, a new smart home hub, and the first OLED MacBook and iPad mini.</div>
+        <a href="https://www.macrumors.com/2026/08/19/apple-leak-macos-26-7/" target="_blank" rel="noopener">MacRumors</a></div>
+      <div class="story"><span class="tag tag-apple">apple</span>
+        <div class="hd">iOS and iPadOS 26.6.1 betas ship security fixes</div>
+        <div class="ds">Safari 26.6 also repairs CSS, cookies, service workers, WebRTC and WebAssembly issues across iOS, iPadOS, visionOS and macOS.</div>
+        <a href="https://www.macrumors.com/2026/08/10/apple-releases-ios-26-6-1/" target="_blank" rel="noopener">MacRumors</a></div>
+      <div class="story"><span class="tag tag-apple">apple</span>
+        <div class="hd">Ads go live in Apple Maps</div>
+        <div class="ds">Now rolling out to US and Canadian users, following the March announcement. A new paid placement surface for local businesses.</div>
+        <a href="https://releasebot.io/updates/apple" target="_blank" rel="noopener">Releasebot</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-parrot">Parrots &amp; Aviculture</div>
-    <div class="story"><span class="tag parrot">Parrot</span><a class="hl" href="https://parrots.org/news/" target="_blank" rel="noopener">Coastal Sierra Leone confirmed as a Timneh Parrot stronghold</a>
-      <p>April research confirms one of the most significant remaining wild populations of the Endangered Timneh &mdash; a rare piece of good news for an African grey relative.</p>
-      <div class="src">World Parrot Trust</div></div>
-    <div class="story"><span class="tag parrot">Parrot</span><a class="hl" href="https://parrots.org/news/" target="_blank" rel="noopener">WPT study exposes the overlooked scale of the live bird trade</a>
-      <p>Work with the University of Hong Kong and ADM Capital Foundation quantifies wild-capture volumes previously missing from the record. Roughly 75% of captured parrots die before reaching a buyer.</p>
-      <div class="src">World Parrot Trust</div></div>
-    <div class="story"><span class="tag parrot">Parrot</span><a class="hl" href="https://news.mongabay.com/short-article/2026/03/critically-endangered-kakapo-parrot-has-standout-breeding-season/" target="_blank" rel="noopener">K&#257;k&#257;p&#333; post a standout breeding season</a>
-      <p>New Zealand's critically endangered flightless parrot had its strongest breeding year in recent memory, with chick T&#299;whiri-A1-2026 hatching in February.</p>
-      <div class="src">Mongabay</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-parrot">parrot</span>
+        <div class="hd">K&#257;k&#257;p&#333; hit 105 chicks &mdash; a 30-year record</div>
+        <div class="ds">The world's largest parrot posts its best breeding season since records began, against an adult population of just 236.</div>
+        <a href="https://www.livescience.com/animals/birds/worlds-fattest-parrot-has-record-breaking-breeding-season" target="_blank" rel="noopener">Live Science</a></div>
+      <div class="story"><span class="tag tag-parrot">parrot</span>
+        <div class="hd">Coastal Sierra Leone holds a key Timneh population</div>
+        <div class="ds">New research confirms one of the most significant remaining strongholds for the Endangered Timneh Parrot.</div>
+        <a href="https://parrots.org/news/" target="_blank" rel="noopener">World Parrot Trust</a></div>
+      <div class="story"><span class="tag tag-parrot">parrot</span>
+        <div class="hd">Live bird trade far larger than previously recorded</div>
+        <div class="ds">A World Parrot Trust study with Hong Kong University and ADM Capital Foundation maps a wild-caught trade well beyond earlier estimates. One in three parrot species now faces extinction in the wild.</div>
+        <a href="https://parrots.org/news/" target="_blank" rel="noopener">World Parrot Trust</a></div>
+    </div>
   </div>
 
   <div class="cat">
     <div class="cat-h cat-health">Health &amp; Longevity</div>
-    <div class="story"><span class="tag health">Health</span><a class="hl" href="https://www.gethealthspan.com/research/article/top-ten-longevity-anti-aging-breakthroughs-of-2025" target="_blank" rel="noopener">Senolytics show 40&ndash;60% drops in inflammation markers</a>
-      <p>Unity Biotechnology and Mayo Clinic report improvement in knee osteoarthritis patients, with measurable systemic inflammation reduction and better mobility in older participants.</p>
-      <div class="src">Healthspan</div></div>
-    <div class="story"><span class="tag health">Health</span><a class="hl" href="https://www.gesda.global/radar-spotlight-longevity-science-crosses-clinical-threshold/" target="_blank" rel="noopener">GESDA: longevity science crosses the clinical threshold</a>
-      <p>The analysis argues 2026 is the year the field moved from theory to interventions with real trial data &mdash; while noting that "10&ndash;20 healthy years" remains a 15&ndash;20 year projection, not a current result.</p>
-      <div class="src">GESDA</div></div>
-    <div class="story"><span class="tag health">Health</span><a class="hl" href="https://www.boldsmedia.com/latest-longevity-researches/" target="_blank" rel="noopener">Partial cellular reprogramming advances without a cancer signal</a>
-      <p>Yamanaka-factor (OSKM) protocols are being tuned for partial reprogramming that avoids tumorigenesis &mdash; still preclinical, but the central technical obstacle is the one being worked on.</p>
-      <div class="src">Bolds Media</div></div>
+    <div class="stories">
+      <div class="story"><span class="tag tag-health">health</span>
+        <div class="hd">Senolytics show real clinical results in osteoarthritis</div>
+        <div class="ds">Unity Biotechnology and Mayo Clinic report 40&ndash;60% reductions in systemic inflammation markers plus improved mobility in elderly participants.</div>
+        <a href="https://www.gethealthspan.com/research/article/top-ten-longevity-anti-aging-breakthroughs-of-2025" target="_blank" rel="noopener">Healthspan</a></div>
+      <div class="story"><span class="tag tag-health">health</span>
+        <div class="hd">Vitamin C suppresses "ferro-aging" via ACSL4</div>
+        <div class="ds">A Cell Metabolism study extends healthspan in mice and improves multiple aging biomarkers in nonhuman primates.</div>
+        <a href="https://www.boldsmedia.com/latest-longevity-researches/" target="_blank" rel="noopener">Bolds Media</a></div>
+      <div class="story"><span class="tag tag-health">health</span>
+        <div class="hd">Longevity science crosses the clinical threshold</div>
+        <div class="ds">GESDA's assessment marks 2026 as the year the field moved from theory into trials. Many researchers see 10&ndash;20 added healthy years as achievable within 15&ndash;20 years.</div>
+        <a href="https://www.gesda.global/radar-spotlight-longevity-science-crosses-clinical-threshold/" target="_blank" rel="noopener">GESDA</a></div>
+    </div>
   </div>
 </div>
 
 <footer>
-  Generated <span id="gen"></span> &middot; Loxahatchee, FL 33470<br>
-  Now 80&deg;F and fair &middot; High 95&deg;F, heat index to 102&deg;F &middot; T-storms 2&ndash;10 PM &middot; Then 76&ndash;90% rain daily through Monday<br>
-  <span style="color:#4a4a50">Weather: NWS api.weather.gov (MFL 63,83) and KDJT observations &middot; Calendar and email: Google &middot; News: web search</span>
+  Generated <b>Wednesday, August 26, 2026 &middot; 6:20 AM EDT</b><br>
+  <b>Loxahatchee, FL</b> &mdash; 83&deg;F now, high 93&deg;F, heat index to 105&deg;F, storms likely after 11 AM (61%)<br>
+  Weather: NWS MFL/101,92 + KDJT observations &middot; Calendar &amp; Mail: Google &middot; News: web search
 </footer>
 
 </div>
 
 <script>
 (function(){
-  var h = new Date().getHours();
-  var g = h < 12 ? 'Good morning' : (h < 18 ? 'Good afternoon' : 'Good evening');
-  document.getElementById('greeting').textContent = g;
+  var now = new Date();
+  var h = now.getHours();
+  var g = h < 12 ? "Good morning" : (h < 18 ? "Good afternoon" : "Good evening");
+  var el = document.getElementById("greet");
+  if (el) el.textContent = g + ", Carl";
 
-  var cards = document.querySelectorAll('#hourly .hr');
+  var cards = document.querySelectorAll("#hourly .hr");
   var best = null;
-  for (var i = 0; i < cards.length; i++){
-    if (parseInt(cards[i].getAttribute('data-h'), 10) === h) best = cards[i];
+  for (var i = 0; i < cards.length; i++) {
+    if (parseInt(cards[i].getAttribute("data-h"), 10) === h) { best = cards[i]; break; }
   }
-  if (best){
-    best.className += ' now';
-    var b = document.createElement('div');
-    b.className = 'badge';
-    b.textContent = 'NOW';
+  if (best) {
+    best.classList.add("now");
+    var b = document.createElement("div");
+    b.className = "badge";
+    b.textContent = "NOW";
     best.appendChild(b);
-    try { best.scrollIntoView({inline:'center', block:'nearest'}); } catch(e){}
+    try { best.scrollIntoView({block:"nearest", inline:"center"}); } catch(e){}
   }
-
-  document.getElementById('gen').textContent = new Date().toLocaleString('en-US',{
-    weekday:'long', month:'long', day:'numeric', year:'numeric',
-    hour:'numeric', minute:'2-digit'
-  });
 })();
-
-function tg(el){
-  var r = el.nextElementSibling;
-  var open = r.className.indexOf('open') === -1;
-  r.className = open ? 'reply open' : 'reply';
-  el.innerHTML = open ? 'Hide draft reply &#9652;' : 'Show draft reply &#9662;';
-}
 </script>
 </body>
 </html>
